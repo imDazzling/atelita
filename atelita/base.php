@@ -28,7 +28,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
-    <a href="index.php" class="navbar-brand"><img src="img/logo.png" alt="" id="logo"></a>
+    <a href="index.php" class="navbar-brand"><img src="img/atelita_isomainweb.png" alt="" id="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
       <span class="navbar-toggler-icon"></span>
     </button>
