@@ -1,5 +1,7 @@
 <?php 
 
+	include('config/config.php');
+
 	error_reporting(0);
 
 	if (isset($_GET["usuario"]) && isset($_GET["pass"])){
@@ -21,8 +23,8 @@
 	}
 		
 	if (!isset($_SESSION["usuario"])){
-		$content="partials/login.inc.php";
-		$contentjs="partials/login.js.php";
+		$content= PATH_PARTIALS . "/login.inc.php";
+		$contentjs= PATH_PARTIALS . "/login.js.php";
 		include("base.php");
 	}
 
