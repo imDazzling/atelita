@@ -10,19 +10,10 @@
 
     define("PATH_HELPERS", SITE_ROOT . "/helpers");
 
-    define("PATH_DAOS", SITE_ROOT . "/modelo/DAOs"); 
-
-    define("UPLOAD_PUB_IMAGE_PATH", SITE_ROOT . "/files/imagenes/publicaciones");
-
-    define("FILES", ROOT_URL . "/files");     
     define("PATH_CSS", ROOT_URL . "/css");
 
     define("PATH_RECURSOS", ROOT_URL . "/recursos");
 
     define("PATH_IMG", ROOT_URL . "/recursos/img");
 
-    define("PATH_FONTS", ROOT_URL . "/fonts");
-
     define("PATH_VENDOR", ROOT_URL . "/vendor");
-
-    ?>
