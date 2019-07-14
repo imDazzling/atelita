@@ -6,9 +6,11 @@
 
     define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'] . "/" . SITE_FOLDER) ;
 
-    define("PATH_PARTIALS", SITE_ROOT . "/partials");
+    define("PATH_VIEWS", SITE_ROOT . "/views");
 
     define("PATH_HELPERS", SITE_ROOT . "/helpers");
+
+    define("PATH_DAOS", SITE_ROOT . "/modelo/DAOs");
 
     define("PATH_CSS", ROOT_URL . "/css");
 

@@ -1,12 +1,40 @@
-<?php 
+<?php
+    session_start();
 
-	session_start();
+    include('config/config.php');
 
-	include('config/config.php');
+    $modulo = "index";
 
-	error_reporting(0);
-	$content= PATH_PARTIALS . "/index.inc.php";
-	$contentjs= PATH_PARTIALS . "/index.js.php";
-	include('base.php');
+    if ( isset($_REQUEST["m"]) )
+    {
+        switch( $_REQUEST["m"] ){
+
+            case "catalogo":
+                $modulo = "catalogo";
+                break;
+
+            case "lib":
+                $modulo = "library";
+                break;
+
+            case "read":
+                $modulo = "reader";
+                break;
+
+            case "logout":
+                $modulo = "logout";
+                break;
+
+            case "login":
+                $modulo = "login";
+                break;
+                    
+            case "default":
+                echo "error404";
+
+        }
+    }
+
+    include('views/' . $modulo . '/index.php'); 
 
 ?>
