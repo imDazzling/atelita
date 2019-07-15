@@ -1,20 +1,21 @@
 <!-- Consola/head -->
+<div id="lectura">
 
-<div id="reader" class="container">
-  <div class="fontsize">
-    <button id="up">+</button>
-    <button id="down">-</button>
+  <div id="console" class="btn-toolbar" role="toolbar">
+  <div class="btn-group mr-2" role="group">
+    <button type="button" class="btn btn-secondary" id="up">Aa+</button>
+    <button type="button" class="btn btn-secondary" id="down">Aa-</button>
   </div>
-  <div class="bgcolor">
-    <button id="bgwhite"></button>
-    <button id="bggrey"></button>
-    <button id="bgblack"></button>
+  <div class="btn-group mr-2" role="group">
+    <button type="button" class="btn btn-secondary" id="bgwhite"></button>
+    <button type="button" class="btn btn-secondary" id="bggrey"></button>
+    <button type="button" class="btn btn-secondary" id="bgblack"></button>
   </div>
 </div>
 
 <!-- Lectura -->
+  <div id="capitulo">
 
-<div id="lectura">
   <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolore ratione labore, eum molestias esse ducimus cum officiis dicta, unde quam repudiandae recusandae suscipit beatae mollitia, nostrum quae. Facere, doloremque?</div>
   <div>Accusantium tenetur nulla ea quis, veritatis rerum dicta pariatur ratione laboriosam ab voluptas eum, nam laudantium voluptatum quasi dolore? Laudantium fugiat eos fuga maxime, totam, vero! Neque, voluptatibus. Quia, reprehenderit.</div>
   <div>Delectus ipsa veniam ex, optio tenetur quia voluptatum vitae dolores nemo, voluptate repellat hic iusto. Fugit sequi accusamus, expedita, ullam repudiandae necessitatibus? Libero fugit dolor veritatis, veniam, fuga unde aut!</div>
@@ -45,6 +46,9 @@
   <div>Ea possimus ipsa voluptate? Doloremque consequuntur debitis officiis, incidunt reprehenderit animi, error beatae. Eos nulla et, unde ducimus cupiditate impedit suscipit animi illum esse quos commodi necessitatibus alias, ipsum fugit!</div>
   <div>Libero vero sapiente velit quo minus ipsam tempore placeat at, vel sed beatae eaque quibusdam reiciendis soluta est veniam necessitatibus aspernatur fuga facilis id incidunt a alias non minima molestiae!</div>
   <div>Dignissimos similique vero quos error harum mollitia magni iure ipsa quod veniam minus fugit quam ipsum, voluptate magnam, unde, maiores libero labore molestiae commodi? Assumenda, eligendi. Enim nesciunt maxime eaque!</div>
+
+  </div>
+
 </div>
 
 <!-- Consola/foot -->

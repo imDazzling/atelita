@@ -74,12 +74,13 @@
 							$password = $_POST["pass_reg"];
 							$email = $_POST["email_reg"];
 
-							$registry = "INSERT INTO 'usuarios' ('nombre', 'password', 'email') " .
+							$registry = "INSERT INTO usuarios " .
+							"(nombre, password2, email) " .
 							"VALUES ('" . $usuario . "', '" . $password . "', '" . $email . "')";
 
 							$conexion->query($registry);
 
-							if ($conexion->query($registry) === TRUE) {
+							if (!$conexion->connect_errno ) {
 								$mensaje_reg = "Usuario registrado correctamente.";
 							}
 							else {
@@ -91,10 +92,10 @@
 						}
 					}
 				}
-				else{}
+
 			}
 		}
-		else{}
+
 	}
 	else{
 		$mensaje_reg = " ";

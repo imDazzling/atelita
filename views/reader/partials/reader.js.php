@@ -17,6 +17,7 @@ $( "#down" ).on( "click", function() {
 }
 });
 </script>
+
 <script>
   $(document).ready(function() {
   $( "#bgwhite" ).on("click", function() {

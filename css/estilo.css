@@ -2,7 +2,6 @@
 
 header .navbar{
   background:linear-gradient(135deg, rgba(123,71,144,1) 0%, rgba(68,27,85,1) 100%);
-  margin-bottom:20px;
 }
 
 @media (min-width: 768px) {
@@ -253,31 +252,6 @@ Extra (xl) large devices (large desktops, 1200px and up)
 */
 
 /* reader */
-
-#reader{
-  background-color:grey;
-  width:2500px;
-  height:40px;
-  margin:0;
-  padding:5px;
-  align-items:center;
-}
-
-.fontsize, .bgcolor{
-  display:inline-block;
-  margin:0 !important;
-  height:30px;
-}
-
-.fontsize button{
-    width:30px;
-    height:30px;
-}
-
-.bgcolor button{
-  width:30px;
-  height:30px;
-}
 
 #bgwhite{
   background-color: white;
