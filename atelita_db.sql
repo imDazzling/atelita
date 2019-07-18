@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2019 a las 21:41:56
--- Versión del servidor: 10.3.16-MariaDB
+-- Tiempo de generación: 18-07-2019 a las 17:32:51
+-- Versión del servidor: 10.3.15-MariaDB
 -- Versión de PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -156,6 +156,44 @@ CREATE TABLE `libros_generos` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `permisos_usuarios`
+--
+
+CREATE TABLE `permisos_usuarios` (
+  `id_usuarios` int(11) NOT NULL,
+  `id_tipos_de_usuarios` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `permisos_usuarios`
+--
+
+INSERT INTO `permisos_usuarios` (`id_usuarios`, `id_tipos_de_usuarios`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipos_de_usuarios`
+--
+
+CREATE TABLE `tipos_de_usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `permisos` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipos_de_usuarios`
+--
+
+INSERT INTO `tipos_de_usuarios` (`id`, `nombre`, `permisos`) VALUES
+(1, 'admin', ''),
+(2, 'usuario', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -243,6 +281,19 @@ ALTER TABLE `libros_generos`
   ADD KEY `id_generos` (`id_generos`);
 
 --
+-- Indices de la tabla `permisos_usuarios`
+--
+ALTER TABLE `permisos_usuarios`
+  ADD PRIMARY KEY (`id_usuarios`,`id_tipos_de_usuarios`),
+  ADD KEY `id_tipos_de_usuarios` (`id_tipos_de_usuarios`);
+
+--
+-- Indices de la tabla `tipos_de_usuarios`
+--
+ALTER TABLE `tipos_de_usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -282,6 +333,12 @@ ALTER TABLE `generos`
 --
 ALTER TABLE `libros`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tipos_de_usuarios`
+--
+ALTER TABLE `tipos_de_usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -327,6 +384,13 @@ ALTER TABLE `libros_estado`
 ALTER TABLE `libros_generos`
   ADD CONSTRAINT `libros_generos_ibfk_1` FOREIGN KEY (`id_libros`) REFERENCES `libros` (`id`),
   ADD CONSTRAINT `libros_generos_ibfk_2` FOREIGN KEY (`id_generos`) REFERENCES `generos` (`id`);
+
+--
+-- Filtros para la tabla `permisos_usuarios`
+--
+ALTER TABLE `permisos_usuarios`
+  ADD CONSTRAINT `permisos_usuarios_ibfk_1` FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `permisos_usuarios_ibfk_2` FOREIGN KEY (`id_tipos_de_usuarios`) REFERENCES `tipos_de_usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

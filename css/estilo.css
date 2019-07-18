@@ -4,6 +4,10 @@ header .navbar{
   background:linear-gradient(to right, #ad5389, #3c1053);
 }
 
+a{
+  color:inherit;
+}
+
 @media (min-width: 768px) {
      .navbar {
          height: 60px;
@@ -36,6 +40,7 @@ header .navbar{
 nav li a{
   text-transform:uppercase;
   font-size:13px;
+  color:#ffffff;
 }
 
 header nav ul li a {
@@ -44,7 +49,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-  color: black;
+  color: #ffffff;
 }
 
 header nav ul li a:after {
@@ -55,7 +60,7 @@ header nav ul li a:after {
   bottom: 0;
   right: 0;
   margin: auto;
-  width: 100%;
+  width: 100% !important;
   height: 1px;
   content: '.';
   color: transparent;
@@ -65,12 +70,11 @@ header nav ul li a:after {
   z-index: -1;
 }
 
-header nav ul li a:hover:after {
+header nav ul li .nav-link:hover:after {
   opacity: 1;
   visibility: visible;
   height: 60px;
 }
-
 /* Search */
 
 #search-box{
@@ -148,6 +152,14 @@ header nav ul li a:hover:after {
   font-size:13px;
 }
 
+nav .dropdown-menu{
+  background-color: #3c1053;
+}
+
+nav .dropdown-item{
+  color:#ffffff;
+}
+
 
 /* carousel */
 
@@ -176,7 +188,7 @@ a:hover{
 
 /* espacio entre header y body */
 
-#catalogo,#library,#lectura{
+#catalogo,#library,#lectura,.container{
   padding:1.5rem 3.6rem;
 }
 
@@ -184,7 +196,7 @@ a:hover{
 ul > li{margin-right:25px;font-weight:lighter;cursor:pointer}
 li.active{border-bottom:3px solid silver;}
 
-.item-photo{display:flex;justify-content:center;align-items:center;border-right:1px solid #f6f6f6;}
+.item-photo{height:300px;display:flex;justify-content:center;align-items:center;margin-right:30px;}
 .menu-items{list-style-type:none;font-size:11px;display:inline-flex;margin-bottom:0;margin-top:20px}
 .btn-leer{width:100%;border-radius:0;background-color:#ad5389;color:#ffffff;}
 .section{width:100%;margin-left:-15px;padding:2px;padding-left:15px;padding-right:15px;background:#f8f9f9}

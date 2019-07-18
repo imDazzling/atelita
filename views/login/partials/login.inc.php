@@ -3,7 +3,7 @@
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Inicia Sesión</h1>
             <div class="social-login">
                 <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Iniciar con Facebook</span> </button>
-                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Iniciar con Google</span> </button>
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google"></i> Iniciar con Google</span> </button>
             </div>
             <p style="text-align:center"> O  </p>
             <input name="usuario" type="text" id="userlogin" class="form-control" placeholder="Usuario" required="" autofocus="">
@@ -30,7 +30,7 @@
                     <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Iniciar con Facebook</span> </button>
                 </div>
                 <div class="social-login">
-                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Iniciar con Google</span> </button>
+                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google"></i> Iniciar con Google</span> </button>
                 </div>
                 
                 <p style="text-align:center">O</p>

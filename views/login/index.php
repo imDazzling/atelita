@@ -20,7 +20,7 @@
 			$_SESSION["usuario"] = $usuario["nombre"];
 			$_SESSION["id_usuario"] = $usuario["id"];
 
-			$mensaje_alerta = "Conectado";
+			header("Location: index.php");
 		}
 		else{
 			$mensaje_alerta = "Usuario y/o contraseña no válido/s.";

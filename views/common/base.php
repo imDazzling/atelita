@@ -8,16 +8,10 @@
   <link rel="stylesheet" href="<?= PATH_VENDOR ?>/owlcarousel/owl.carousel.min.css">
   <link rel="stylesheet" href="<?= PATH_VENDOR ?>/owlcarousel/owl.theme.default.min.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <script src="<?= PATH_VENDOR ?>/owlcarousel/owl.carousel.min.js"></script>
+
+
 	<link href="<?= PATH_CSS ?>/estilo.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -25,10 +19,10 @@
 
 <!-- HEADER + NAVBAR -->
 <header>
-  <nav class="navbar navbar-header navbar-expand-md navbar-dark">
+  <nav class="navbar navbar-header navbar-expand-md">
     <div class="container-fluid">
       <div class="navbar-brand"><a href="index.php"><img src="<?= PATH_IMG ?>/atelita_isomainwhite.png" alt="" id="logo"></a></div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarResponsive">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="#navbarResponsive">
@@ -50,22 +44,20 @@
         </form>
       </div>
       <div id="#navbarResponsive" class="navbar-login">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ml-md-auto">
 
           <?php 
                 if ( !isset($_SESSION["usuario"]) ){ ?>
                   <li class="nav-item">
-                     <a class="nav-link" href="index.php?m=login">LOGIN</a>
+                     <a class="nav-link" href="index.php?m=login">INGRESA/REGISTRATE</a>
                   </li>
                 <?php 
                 }
                 else{
                 ?>
                   <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><?= $_SESSION["usuario"] ?></a>
+                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false"><?= $_SESSION["usuario"] ?></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                       <a class="dropdown-item" href="#">Cuenta</a>
-                       
                        <a class="dropdown-item" href="index.php?m=logout">Salir</a>
                     </div>
                   </li>
@@ -148,6 +140,12 @@
   </div>
 </nav>
 </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="<?= PATH_VENDOR ?>/owlcarousel/owl.carousel.min.js"></script>
 
 <!-- Scripts circunstanciales -->
 

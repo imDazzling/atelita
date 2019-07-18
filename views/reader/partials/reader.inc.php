@@ -3,8 +3,8 @@
 
 <div id="console" class="btn-toolbar d-flex justify-content-center" role="toolbar">
   <div class="btn-group mr-2" role="group">
-    <button type="button" class="btn btn-secondary" id="up">Aa+</button>
     <button type="button" class="btn btn-secondary" id="down">Aa-</button>
+    <button type="button" class="btn btn-secondary" id="up">Aa+</button>
   </div>
   <div class="btn-group mr-2" role="group">
     <button type="button" class="btn btn-secondary" id="bgwhite"></button>
