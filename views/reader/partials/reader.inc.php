@@ -1,7 +1,7 @@
 <!-- Consola/head -->
 <div id="lectura">
 
-  <div id="console" class="btn-toolbar" role="toolbar">
+<div id="console" class="btn-toolbar d-flex justify-content-center" role="toolbar">
   <div class="btn-group mr-2" role="group">
     <button type="button" class="btn btn-secondary" id="up">Aa+</button>
     <button type="button" class="btn btn-secondary" id="down">Aa-</button>
@@ -14,7 +14,7 @@
 </div>
 
 <!-- Lectura -->
-  <div id="capitulo">
+<div id="capitulo">
 
   <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolore ratione labore, eum molestias esse ducimus cum officiis dicta, unde quam repudiandae recusandae suscipit beatae mollitia, nostrum quae. Facere, doloremque?</div>
   <div>Accusantium tenetur nulla ea quis, veritatis rerum dicta pariatur ratione laboriosam ab voluptas eum, nam laudantium voluptatum quasi dolore? Laudantium fugiat eos fuga maxime, totam, vero! Neque, voluptatibus. Quia, reprehenderit.</div>
@@ -47,9 +47,15 @@
   <div>Libero vero sapiente velit quo minus ipsam tempore placeat at, vel sed beatae eaque quibusdam reiciendis soluta est veniam necessitatibus aspernatur fuga facilis id incidunt a alias non minima molestiae!</div>
   <div>Dignissimos similique vero quos error harum mollitia magni iure ipsa quod veniam minus fugit quam ipsum, voluptate magnam, unde, maiores libero labore molestiae commodi? Assumenda, eligendi. Enim nesciunt maxime eaque!</div>
 
-  </div>
-
 </div>
+
+
 
 <!-- Consola/foot -->
 
+<div id="console">
+  
+</div>
+
+
+</div>

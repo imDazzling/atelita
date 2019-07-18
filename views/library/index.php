@@ -6,8 +6,11 @@
 	$daoLibros = PATH_DAOS . "/librosDAO.php";
 	include($daoLibros);
 
-	$daoUsuarios = PATH_DAOS . "/libraryDAO.php";
-	include($daoUsuarios);
+	$daoLib = PATH_DAOS . "/libraryDAO.php";
+	include($daoLib);
+
+	$daoEst = PATH_DAOS . "/estadoDAO.php";
+	include($daoEst);
 
 	$helper = PATH_HELPERS . "/HTML_helpers.php";
 	include($helper);

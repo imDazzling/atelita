@@ -13,6 +13,10 @@
                 $modulo = "catalogo";
                 break;
 
+            case "book":
+                $modulo = "libros";
+                break;
+
             case "lib":
                 $modulo = "library";
                 break;

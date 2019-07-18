@@ -15,6 +15,8 @@
 	$helper = PATH_HELPERS . "/HTML_helpers.php";
 	include($helper);
 
-	$content= PATH_VIEWS . "/catalogo/partials/catalogo.inc.php";
+	$content= PATH_VIEWS . "/libros/partials/libro.inc.php";
+	$contentjs= PATH_VIEWS . "/libros/partials/libro.js.php";
 	include( PATH_VIEWS . '/common/base.php' );
 
+?>
