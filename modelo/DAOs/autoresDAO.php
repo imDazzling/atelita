@@ -2,12 +2,12 @@
 
     include_once PATH_HELPERS . '/database_helper.php';
 
-	function buscarEstado(){
+	function buscarAutor(){
 
         $conexion = getConexion();
 
         $consulta = "SELECT * " . 
-                    "FROM estado " .
+                    "FROM autores " .
                     "ORDER BY nombre";
 
         $resultado = $conexion->query( $consulta );
@@ -15,39 +15,39 @@
         return $resultado;
 	}
 
-    function agregarEstado( $estado ){
+    function agregarAutor( $autor ){
 
         $conexion = getConexion();
 
-        $sql = "INSERT INTO estado " . 
+        $sql = "INSERT INTO autores " . 
                     "(nombre)" 
                         . " VALUES ('" 
-                        . $estado["nombre"]
+                        . $autor["descripcion"]
                      . "')";
 
         $conexion->query( $sql );
 
     }
 
-    function modificarEstado( $estado ){
+    function modificarAutor( $autor ){
 
         $conexion = getConexion();
 
-        $sql = "UPDATE estado " . 
-                "SET nombre = '" . $estado["nombre"] .
-                "' WHERE id = " . $estado["id"]; 
+        $sql = "UPDATE autores " . 
+                "SET nombre = '" . $autor["descripcion"] .
+                "' WHERE id = " . $autor["id"]; 
                        
         $conexion->query( $sql );
 
     }
 
 
-    function eliminarEstado( $estado ){
+    function eliminarAutor( $autor ){
 
         $conexion = getConexion();
 
-        $sql = "DELETE FROM estado " . 
-                " WHERE id = " . $estado["id"]; 
+        $sql = "DELETE FROM autores " . 
+                " WHERE id = " . $autor["id"]; 
                        
         $conexion->query( $sql );
 

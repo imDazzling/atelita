@@ -9,16 +9,16 @@
     {
         switch( $_REQUEST["m"] ){
 
-            case "generos_pub":
-                $modulo = "generos_pub";
+            case "generos":
+                $modulo = "generos";
                 break;
 
-            case "libros_pubs":
-                $modulo = "libros_pub";
+            case "libros":
+                $modulo = "libros";
                 break;
 
-            case "cap_pubs":
-                $modulo = "capitulos_pub";
+            case "caps":
+                $modulo = "capitulos";
                 break;
 
             case "logout":

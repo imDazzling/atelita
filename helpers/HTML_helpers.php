@@ -49,3 +49,28 @@
 
     return $opcionesEstado;
   }
+
+  function getOptionsAutor($incluir_todoslosautores = false, $id_item_seleccionado = null){
+    
+    $conexion = getConexion();
+
+    $autores = buscarAutor();
+
+    $opcionesAutor = "";
+
+    if ($incluir_todoslosautores){
+      $opcionesAutor .= '<option value="-1">Todos los Autores</option>';
+    }
+
+    foreach ( $autores as $autor ){
+      $opcionesAutor .= '<option value="'. $autor["id"] . '"';
+
+      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $autor["id"]) ){
+            $opcionesAutor .= 'selected="selected" ';
+      }
+
+      $opcionesAutor .= '>' . $autor["nombre"] . '</option>';
+    }
+
+    return $opcionesAutor;
+  }
