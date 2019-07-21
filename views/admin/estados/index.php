@@ -47,6 +47,6 @@
     }
 
 
-    $contenido_seccion2 = PATH_VIEWS . "/admin/tipos_pub/partials/contenido_estados.inc.php";
+    $content = PATH_VIEWS . "/admin/estados/partials/contenido_estados.inc.php";
 
     include( PATH_VIEWS . '/admin/common/base.php' );

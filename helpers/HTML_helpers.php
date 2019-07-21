@@ -1,5 +1,40 @@
 <?php 
 
+  function getTablaHTML( $registros, $campos, $primary_key, $nombre_modulo ){
+
+    $tablaHTML = "<table class=\"table table-hover\">";
+
+        $tablaHTML .= "<thead><tr>";
+
+        foreach ($campos as $campo => $label){
+          $tablaHTML .= "<th>$label</th>";
+        }
+
+        $tablaHTML .= "<th>Acciones</th></tr></thead>";
+
+    while ( $registro = $registros->fetch_assoc() ){
+
+      $tablaHTML .= '<tr id="' . $registro[$primary_key] . '">';
+
+      foreach ($campos as $campo => $label){
+
+        $tablaHTML .= '<td>' . $registro[ "$campo" ] . "</td>";
+
+      }
+      
+      $tablaHTML .= "<td>";
+
+      $tablaHTML .= "<button onclick=\"mostrarEditor('modificar', " . $registro[$primary_key]  . ");\" class=\"btn btn-success btn-sm\">Editar</button>";
+
+      $tablaHTML .= "<a role=\"button\" class=\"btn btn-danger btn-sm ml-1  \" href='index.php?m=" . $nombre_modulo . "&a=del&id=" . $registro[$primary_key] . "'>Eliminar</a>";
+    }
+
+    $tablaHTML .= "</table>";
+
+    return $tablaHTML;
+
+  }
+
   function getOptionsGeneros($incluir_todoslosgeneros = false, $id_item_seleccionado = null){
     
     $conexion = getConexion();

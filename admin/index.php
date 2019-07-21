@@ -13,7 +13,15 @@
                 $modulo = "generos";
                 break;
 
-            case "libros":
+            case "estados":
+                $modulo = "estados";
+                break;
+
+            case "autores":
+                $modulo = "autores";
+                break;
+
+            case "books":
                 $modulo = "libros";
                 break;
 

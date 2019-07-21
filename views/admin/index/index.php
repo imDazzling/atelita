@@ -2,16 +2,13 @@
 
     include_once PATH_HELPERS . '/database_helper.php';
 
-
-    if ( isset( $_POST["login"] ) ){
-
-        if ( isset( $_POST["usuario"] )  && $_POST["password"] != "" ){
+    if ( isset( $_POST["usuario"] )  && $_POST["pass"] != "" ){
 
             $conexion = getConexion();
 
             $consulta = "SELECT * " . 
                         "FROM usuarios " .
-                        "WHERE nombre = '" . $_POST["usuario"] . "' AND pass = '" . $_POST["password"] . "'";
+                        "WHERE nombre = '" . $_POST["usuario"] . "' AND password = '" . $_POST["pass"] . "'";
 
             $resultado = $conexion->query( $consulta );
 
@@ -19,9 +16,9 @@
 
                 //Obtengo el nombre del usuario
 
-                $admin = $resultado->fetch_assoc();
+                $usuario = $resultado->fetch_assoc();
 
-                $_SESSION["admin"] = $usuario["nombre"];
+                $_SESSION["usuario"] = $usuario["nombre"];
                 
 
             }
@@ -33,15 +30,13 @@
             $mensaje_alerta = "Debe completar el usuario y la contraseña";
         }
 
-    }
 
+    if ( !isset($_SESSION["usuario"] ) ){
 
-    if ( !isset($_SESSION["admin"] ) ){
-
-        $contenido = PATH_VIEWS . "/admin/index/partials/login_admin.inc.php";
+        $content = PATH_VIEWS . "/admin/index/partials/login_admin.inc.php";
     }
     else{
-        $contenido = PATH_VIEWS . "/admin/index/partials/contenido_index_admin.inc.php";
+        $content = PATH_VIEWS . "/admin/index/partials/contenido_index_admin.inc.php";
     }
 
     /*$contenido_listado  = PATH_VIEWS . "/index/partials/listado_index.inc.php";*/

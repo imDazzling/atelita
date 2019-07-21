@@ -48,6 +48,6 @@
     }
 
 
-    $contenido = PATH_VIEWS . "/admin/generos/partials/contenido_generos.inc.php";
+    $content = PATH_VIEWS . "/admin/generos/partials/contenido_generos.inc.php";
 
     include( PATH_VIEWS . '/admin/common/base.php' );

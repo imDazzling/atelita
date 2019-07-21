@@ -22,51 +22,6 @@
   <nav class="navbar navbar-header navbar-expand-md">
     <div class="container-fluid">
       <div class="navbar-brand"><a href="index.php"><img src="<?= PATH_IMG ?>/atelita_isomainwhite.png" alt="" id="logo"></a></div>
-      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="#navbarResponsive">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?m=catalogo">Catálogo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?m=lib">Mi librería</a>
-          </li>
-        </ul>
-      </div>
-      <div id="search-box">
-        <form id="search-nav" class="form-inline">
-          <div class="searchbar">
-            <input class="search_input" type="text" name="" placeholder="Buscar...">
-            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-          </div>
-        </form>
-      </div>
-      <div id="#navbarResponsive" class="navbar-login">
-        <ul class="navbar-nav ml-md-auto">
-
-          <?php 
-                if ( !isset($_SESSION["usuario"]) ){ ?>
-                  <li class="nav-item">
-                     <a class="nav-link" href="index.php?m=login">INGRESA/REGISTRATE</a>
-                  </li>
-                <?php 
-                }
-                else{
-                ?>
-                  <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false"><?= $_SESSION["usuario"] ?></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                       <a class="dropdown-item" href="index.php?m=logout">Salir</a>
-                    </div>
-                  </li>
-                <?php 
-                }
-                ?>
-
-        </ul>
-      </div>
     </div>
   </nav>
 </header>
@@ -80,31 +35,6 @@
 ?>
 
 <!-- Footer -->
-
-<div class="container-fluid padding">
-  <div class="row text-center padding">
-    <div class="col-12">
-      <h2>Conectate con Nosotros</h2>
-    </div>
-    <div class="col-12 social padding">
-      <a href="#">
-        <span style="font-size:3em;color:#335795">
-          <i class="fab fa-facebook"></i>
-        </span>
-      </a>
-      <a href="#">
-        <span style="font-size:3em;color:#33CCFF">
-          <i class="fab fa-twitter"></i>
-        </span>
-      </a>
-      <a href="#">
-        <span style="font-size:3em;color:#97163D">
-          <i class="fab fa-instagram"></i>
-        </span>
-      </a>
-    </div>
-  </div>
-</div>
 <footer>
 <nav class="navbar navbar-expand-md navbar-light bg-light text-center">
   <div class="container-fluid justify-content-center">
