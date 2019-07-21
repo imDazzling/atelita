@@ -14,6 +14,7 @@
 </div>
 
 <!-- Lectura -->
+
 <div id="capitulo">
 
   <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolore ratione labore, eum molestias esse ducimus cum officiis dicta, unde quam repudiandae recusandae suscipit beatae mollitia, nostrum quae. Facere, doloremque?</div>
@@ -48,8 +49,6 @@
   <div>Dignissimos similique vero quos error harum mollitia magni iure ipsa quod veniam minus fugit quam ipsum, voluptate magnam, unde, maiores libero labore molestiae commodi? Assumenda, eligendi. Enim nesciunt maxime eaque!</div>
 
 </div>
-
-
 
 <!-- Consola/foot -->
 

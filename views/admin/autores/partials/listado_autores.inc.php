@@ -6,6 +6,6 @@
 
     $autor = buscarAutor();
 
-    $campos = [ "id" => "ID", "nombre" => "Nombre" ];
+    $campos = [ "id_autores" => "ID", "nombre_autores" => "Nombre" ];
 
-	echo getTablaHTML($autor, $campos, "id", "estado");
+	echo getTablaHTML($autor, $campos, "id_autores", "nombre_autores");

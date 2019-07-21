@@ -8,7 +8,7 @@
 
         $consulta = "SELECT * " . 
                     "FROM generos " .
-                    "ORDER BY nombre";
+                    "ORDER BY nombre_generos";
 
         $resultado = $conexion->query( $consulta );
 
@@ -20,7 +20,7 @@
         $conexion = getConexion();
 
         $sql = "INSERT INTO generos " . 
-                    "(nombre)" 
+                    "(nombre_generos, descripcion_generos)" 
                         . " VALUES ('" 
                         . $genero["nombre"]
                      . $genero["descripcion"] . "')";
@@ -34,9 +34,9 @@
         $conexion = getConexion();
 
         $sql = "UPDATE generos " . 
-                "SET nombre = '" . $genero["nombre"] .
-                "SET descripcion = '" . $genero["descripcion"] .
-                "' WHERE id = " . $genero["id"]; 
+                "SET nombre_generos = '" . $genero["nombre"] .
+                "SET descripcion_generos = '" . $genero["descripcion"] .
+                "' WHERE id_generos = " . $genero["id"]; 
                        
         $conexion->query( $sql );
 
@@ -48,7 +48,7 @@
         $conexion = getConexion();
 
         $sql = "DELETE FROM generos " . 
-                " WHERE id = " . $genero["id"]; 
+                " WHERE id_generos = " . $genero["id"]; 
                        
         $conexion->query( $sql );
 

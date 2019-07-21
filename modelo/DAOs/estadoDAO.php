@@ -8,7 +8,7 @@
 
         $consulta = "SELECT * " . 
                     "FROM estado " .
-                    "ORDER BY nombre";
+                    "ORDER BY nombre_estado";
 
         $resultado = $conexion->query( $consulta );
 
@@ -20,7 +20,7 @@
         $conexion = getConexion();
 
         $sql = "INSERT INTO estado " . 
-                    "(nombre)" 
+                    "(nombre_estado)" 
                         . " VALUES ('" 
                         . $estado["nombre"]
                      . "')";
@@ -34,8 +34,8 @@
         $conexion = getConexion();
 
         $sql = "UPDATE estado " . 
-                "SET nombre = '" . $estado["nombre"] .
-                "' WHERE id = " . $estado["id"]; 
+                "SET nombre_estado = '" . $estado["nombre"] .
+                "' WHERE id_estado = " . $estado["id"]; 
                        
         $conexion->query( $sql );
 
@@ -47,7 +47,7 @@
         $conexion = getConexion();
 
         $sql = "DELETE FROM estado " . 
-                " WHERE id = " . $estado["id"]; 
+                " WHERE id_estado = " . $estado["id"]; 
                        
         $conexion->query( $sql );
 

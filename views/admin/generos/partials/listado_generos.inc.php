@@ -6,6 +6,6 @@
 
     $genero = buscarGenero();
 
-    $campos = [ "id" => "ID", "nombre" => "Nombre", "descripcion" => "Descripcion" ];
+    $campos = [ "id_generos" => "ID", "nombre_generos" => "Nombre", "descripcion_generos" => "Descripcion" ];
 
-	echo getTablaHTML($genero, $campos, "id", "generos");
+	echo getTablaHTML($genero, $campos, "id_generos", "nombre_generos", "descripcion_generos");

@@ -3,6 +3,9 @@
 	$daoGenero = PATH_DAOS . "/generosDAO.php";
 	include($daoGenero);
 
+	$daoAutor = PATH_DAOS . "/autoresDAO.php";
+	include($daoAutor);
+
 	$daoLibros = PATH_DAOS . "/librosDAO.php";
 	include($daoLibros);
 
@@ -16,5 +19,6 @@
 	include($helper);
 
 	$content= PATH_VIEWS . "/catalogo/partials/catalogo.inc.php";
+	$contentjs= PATH_VIEWS . "/catalogo/partials/catalogo.js.php";
 	include( PATH_VIEWS . '/common/base.php' );
 

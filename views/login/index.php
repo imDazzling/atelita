@@ -8,8 +8,8 @@
 
 		$consulta = "SELECT * " . 
 					"FROM usuarios " . 
-					"WHERE nombre = '" . $_POST["usuario"] . "' " .
-					"AND password = '" . $_POST["pass"] . "'";
+					"WHERE nombre_usuarios = '" . $_POST["usuario"] . "' " .
+					"AND password_usuarios = '" . $_POST["pass"] . "'";
 
 		$resultado = $conexion->query($consulta);
 
@@ -17,8 +17,8 @@
 
 			$usuario = $resultado->fetch_assoc();
 
-			$_SESSION["usuario"] = $usuario["nombre"];
-			$_SESSION["id_usuario"] = $usuario["id"];
+			$_SESSION["usuario"] = $usuario["nombre_usuarios"];
+			$_SESSION["id_usuarios"] = $usuario["id_usuarios"];
 
 			header("Location: index.php");
 		}
@@ -38,7 +38,7 @@
 
 			$consulta = "SELECT * " . 
 						"FROM usuarios " . 
-						"WHERE nombre = '" . $_POST["usuario_reg"] . "'";
+						"WHERE nombre_usuarios = '" . $_POST["usuario_reg"] . "'";
 
 			$resultado = $conexion->query($consulta);
 
@@ -46,7 +46,7 @@
 
 				$usuario = $resultado->fetch_assoc();
 
-				$_SESSION["usuario_reg"] = $usuario["nombre"];
+				$_SESSION["usuario_reg"] = $usuario["nombre_usuarios"];
 				$mensaje_reg = "Nombre de usuario ya registrado.";
 			}
 			else{
@@ -54,7 +54,7 @@
 
 					$consulta = "SELECT * " . 
 						"FROM usuarios " . 
-						"WHERE email = '" . $_POST["email_reg"] . "'";
+						"WHERE email_usuarios = '" . $_POST["email_reg"] . "'";
 
 					$resultado = $conexion->query($consulta);
 
@@ -62,7 +62,7 @@
 
 						$usuario = $resultado->fetch_assoc();
 
-						$_SESSION["email_reg"] = $usuario["email"];
+						$_SESSION["email_reg"] = $usuario["email_usuarios"];
 						$mensaje_reg = "Dirección de correo ya registrada.";
 					}
 					else{
@@ -75,7 +75,7 @@
 							$email = $_POST["email_reg"];
 
 							$registry = "INSERT INTO usuarios " .
-							"(nombre, password2, email) " .
+							"(nombre_usuarios, password_usuarios, email_usuarios) " .
 							"VALUES ('" . $usuario . "', '" . $password . "', '" . $email . "')";
 
 							$conexion->query($registry);

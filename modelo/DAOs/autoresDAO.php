@@ -8,7 +8,7 @@
 
         $consulta = "SELECT * " . 
                     "FROM autores " .
-                    "ORDER BY nombre";
+                    "ORDER BY nombre_autores";
 
         $resultado = $conexion->query( $consulta );
 
@@ -20,9 +20,9 @@
         $conexion = getConexion();
 
         $sql = "INSERT INTO autores " . 
-                    "(nombre)" 
+                    "(nombre_autores)" 
                         . " VALUES ('" 
-                        . $autor["descripcion"]
+                        . $autor["nombre"]
                      . "')";
 
         $conexion->query( $sql );
@@ -34,8 +34,8 @@
         $conexion = getConexion();
 
         $sql = "UPDATE autores " . 
-                "SET nombre = '" . $autor["descripcion"] .
-                "' WHERE id = " . $autor["id"]; 
+                "SET nombre_autores = '" . $autor["nombre"] .
+                "' WHERE id_autores = " . $autor["id"]; 
                        
         $conexion->query( $sql );
 
@@ -47,7 +47,7 @@
         $conexion = getConexion();
 
         $sql = "DELETE FROM autores " . 
-                " WHERE id = " . $autor["id"]; 
+                " WHERE id_autores = " . $autor["id"]; 
                        
         $conexion->query( $sql );
 

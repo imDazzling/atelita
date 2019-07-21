@@ -8,7 +8,7 @@
 
             $consulta = "SELECT * " . 
                         "FROM usuarios " .
-                        "WHERE nombre = '" . $_POST["usuario"] . "' AND password = '" . $_POST["pass"] . "'";
+                        "WHERE nombre_usuarios = '" . $_POST["usuario"] . "' AND password_usuarios = '" . $_POST["pass"] . "'";
 
             $resultado = $conexion->query( $consulta );
 
@@ -18,7 +18,7 @@
 
                 $usuario = $resultado->fetch_assoc();
 
-                $_SESSION["usuario"] = $usuario["nombre"];
+                $_SESSION["usuario"] = $usuario["nombre_usuarios"];
                 
 
             }

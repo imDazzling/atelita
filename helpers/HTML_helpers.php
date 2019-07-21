@@ -50,11 +50,11 @@
     foreach ( $generos as $genero ){
       $opcionesGenero .= '<option value="'. $genero["id"] . '"';
 
-      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $genero["id"]) ){
+      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $genero["id_generos"]) ){
             $opcionesGenero .= 'selected="selected" ';
       }
 
-      $opcionesGenero .= '>' . $genero["nombre"] . '</option>';
+      $opcionesGenero .= '>' . $genero["nombre_generos"] . '</option>';
     }
 
     return $opcionesGenero;
@@ -73,19 +73,19 @@
     }
 
     foreach ( $estados as $estado ){
-      $opcionesEstado .= '<option value="'. $estado["id"] . '"';
+      $opcionesEstado .= '<option value="'. $estado["id_estado"] . '"';
 
-      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $estado["id"]) ){
+      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $estado["id_estado"]) ){
             $opcionesEstado .= 'selected="selected" ';
       }
 
-      $opcionesEstado .= '>' . $estado["nombre"] . '</option>';
+      $opcionesEstado .= '>' . $estado["nombre_estado"] . '</option>';
     }
 
     return $opcionesEstado;
   }
 
-  function getOptionsAutor($incluir_todoslosautores = false, $id_item_seleccionado = null){
+  function getOptionsAutores($incluir_todoslosautores = false, $id_item_seleccionado = null){
     
     $conexion = getConexion();
 
@@ -98,13 +98,13 @@
     }
 
     foreach ( $autores as $autor ){
-      $opcionesAutor .= '<option value="'. $autor["id"] . '"';
+      $opcionesAutor .= '<option class="autor-lista" value="'. $autor["id_autores"] . '"';
 
-      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $autor["id"]) ){
+      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $autor["id_autores"]) ){
             $opcionesAutor .= 'selected="selected" ';
       }
 
-      $opcionesAutor .= '>' . $autor["nombre"] . '</option>';
+      $opcionesAutor .= '>' . $autor["nombre_autores"] . '</option>';
     }
 
     return $opcionesAutor;

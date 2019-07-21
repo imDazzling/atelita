@@ -6,6 +6,6 @@
 
     $estado = buscarEstado();
 
-    $campos = [ "id" => "ID", "nombre" => "Nombre" ];
+    $campos = [ "id_estado" => "ID", "nombre_estado" => "Nombre" ];
 
-	echo getTablaHTML($estado, $campos, "id", "estado");
+	echo getTablaHTML($estado, $campos, "id_estado", "estado_estado");
