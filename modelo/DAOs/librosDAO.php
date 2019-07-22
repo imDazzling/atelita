@@ -2,17 +2,19 @@
 
     include_once PATH_HELPERS . '/database_helper.php';
 
-	function buscarLibros($busqueda, $id, $orden, $estado, $largo){
+	function buscarLibros($busqueda, $id_generos, $orden, $estado, $largo){
 
         $conexion = getConexion();
 
-        $consulta = "SELECT id, nombre, SUBSTRING(descripcion, 1, 250) AS descripcion, portada " . 
+        $consulta = "SELECT id_libros, nombre_libros, SUBSTRING(descripcion_libros, 1, 250) AS descripcion_libros, portada_libros, id_autores, id_generos, id_estado " . 
                   "FROM libros ";
 
         if ( $busqueda != "" ){
 
-           $consulta .= " WHERE (pub_titulo LIKE '%" . $busqueda . "%' OR pub_descripcion LIKE '%" . $busqueda . "%')";
+           $consulta .= " WHERE (nombre_libros LIKE '%" . $busqueda . "%' OR descripcion_libros LIKE '%" . $busqueda . "%')";
         }
+
+        /*
 
         if ( $precio_desde ){
 
@@ -42,7 +44,7 @@
 
             $consulta .= " pub_id_categoria = " . $id_categoria;
 
-        }
+        }*/
 
         $consulta .= " ORDER BY " . $orden;
 
@@ -50,26 +52,28 @@
 
 
         return $resultado;
+
+
 	}
 
-    function buscarPublicacion( $id_publicacion ){
+    function buscarLibro( $id_libro ){
         $conexion = getConexion();
 
         $consulta = "SELECT * " . 
-                  "FROM publicaciones " . 
-                  "WHERE pub_id = " . $id_publicacion;
+                  "FROM libros " . 
+                  "WHERE id_libros = " . $id_libro;
 
         $resultado = $conexion->query( $consulta );
 
         return $resultado;
     }
 
-    function buscarPublicacionesUsuario( $id_usuario ){
+    function buscarLibrosAutores( $id_autor){
         $conexion = getConexion();
 
-        $consulta = "SELECT pub_id, pub_titulo, SUBSTRING(pub_descripcion, 1, 100) AS pub_descripcion, pub_precio, pub_id_categoria, pub_id_usuario, pub_id_tipo_publicacion, pub_imagen " . 
-                  "FROM publicaciones " . 
-                  "WHERE pub_id_usuario = " . $id_usuario;
+        $consulta = "SELECT id_libros, nombre_libros, SUBSTRING(descripcion_libros, 1, 250) AS descripcion_libros, portada_libros, id_autores, id_generos, id_estado " . 
+                  "FROM libros " . 
+                  "WHERE id_autores = " . $id_autor;
 
 
         $resultado = $conexion->query( $consulta );
@@ -77,30 +81,30 @@
         return $resultado;
     }
 
-    function eliminarPublicacion( $id_publicacion ){
+    function eliminarLibro( $id_libro ){
 
         $conexion = getConexion();
 
-        $sql = "DELETE FROM publicaciones " .         
-               " WHERE pub_id = " . $id_publicacion;
+        $sql = "DELETE FROM libros " .         
+               " WHERE id_libros = " . $id_libro;
 
         $resultado = $conexion->query( $sql );
 
     }
 
-    function agregarPublicacion( $publicacion ){
+    function agregarLibro( $libro ){
 
         $conexion = getConexion();
 
-        $sql = "INSERT INTO publicaciones " . 
-                    "(pub_titulo, pub_descripcion, pub_precio, pub_id_categoria, pub_id_usuario, pub_id_tipo_publicacion, pub_imagen)" 
+        $sql = "INSERT INTO libros " . 
+                    "(nombre_libros, descripcion_libros, portada_libros, id_autores, id_generos, id_estado)" 
                         . " VALUES ('" 
-                        . $publicacion["titulo"] . "', '"
+                        . $publicacion["nombre"] . "', '"
                         . $publicacion["descripcion"] . "', "
-                        . $publicacion["precio"] . ", "
-                        . $publicacion["id_categoria"] . ", "
-                        . $publicacion["id_usuario"] . ","
-                        . $publicacion["id_tipo_publicacion"] . ", '"
+                        . $publicacion["portada"] . ", "
+                        . $publicacion["id_autores"] . ", "
+                        . $publicacion["id_generos"] . ","
+                        . $publicacion["id_estado"] . ", '"
                         . $publicacion["imagen"] . "'"
 
                      . ")";
@@ -109,23 +113,23 @@
 
     }
 
-    function modificarPublicacion( $publicacion ){
+    function modificarLibro( $libro ){
 
         $conexion = getConexion();
 
-        $sql = "UPDATE publicaciones SET " . 
-                    "pub_titulo= \"" . $publicacion["titulo"] . "\"" .
-                    ", pub_descripcion=\"" . $publicacion["descripcion"] . "\"". 
-                    ", pub_precio=" . $publicacion["precio"] .
-                    ", pub_id_categoria=" . $publicacion["id_categoria"] .
-                    ", pub_id_usuario=" . $publicacion["id_usuario"] .
-                    ", pub_id_tipo_publicacion=" . $publicacion["id_tipo_publicacion"];
+        $sql = "UPDATE libros SET " . 
+                    "nombre_libros= \"" . $libro["nombre"] . "\"" .
+                    ", descripcion_libros=\"" . $libro["descripcion"] . "\"". 
+                    ", portada_libros=" . $libro["portada"] .
+                    ", id_generos=" . $libro["id_generos"] .
+                    ", id_autores=" . $libro["id_autores"] .
+                    ", id_estado=" . $libro["id_estado"];
 
-        if ( $publicacion["imagen"] ){
-            $sql .= ", pub_imagen=\"" . $publicacion["imagen"] . "\"";
+        if ( $libro["portada"] ){
+            $sql .= ", portada_libros=\"" . $libro["portada"] . "\"";
         }
         
-        $sql .= " WHERE pub_id = " . $publicacion["id"];
+        $sql .= " WHERE id_libros = " . $libro["id"];
 
 
 

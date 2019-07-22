@@ -46,3 +46,14 @@
         $resultado = $conexion->query( $consulta );
 
     }
+
+    function contarLibreria( $orden ){
+        $conexion = getConexion();
+
+        $consulta = "SELECT COUNT FROM libreria"
+                    "WHERE id_libros=" . $id_libro;
+
+        $resultado = $conexion->query( $consulta );
+
+        return $resultado;
+    }
