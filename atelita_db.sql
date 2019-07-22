@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-07-2019 a las 00:05:21
--- Versión del servidor: 10.3.16-MariaDB
+-- Tiempo de generación: 22-07-2019 a las 16:46:31
+-- Versión del servidor: 10.3.15-MariaDB
 -- Versión de PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -114,18 +114,10 @@ CREATE TABLE `libros` (
   `id_libros` int(11) NOT NULL,
   `nombre_libros` varchar(40) NOT NULL,
   `descripcion_libros` varchar(250) NOT NULL,
-  `portada_libros` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `libros_autores`
---
-
-CREATE TABLE `libros_autores` (
-  `id_libros` int(11) NOT NULL,
-  `id_autores` int(11) NOT NULL
+  `portada_libros` varchar(50) NOT NULL,
+  `id_autores` int(11) NOT NULL,
+  `id_generos` int(11) NOT NULL,
+  `id_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -137,28 +129,6 @@ CREATE TABLE `libros_autores` (
 CREATE TABLE `libros_capitulos` (
   `id_libros` int(11) NOT NULL,
   `id_capitulos` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `libros_estado`
---
-
-CREATE TABLE `libros_estado` (
-  `id_libros` int(11) NOT NULL,
-  `id_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `libros_generos`
---
-
-CREATE TABLE `libros_generos` (
-  `id_libros` int(11) NOT NULL,
-  `id_generos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -259,14 +229,10 @@ ALTER TABLE `libreria`
 --
 ALTER TABLE `libros`
   ADD PRIMARY KEY (`id_libros`),
-  ADD UNIQUE KEY `nombre` (`nombre_libros`,`portada_libros`);
-
---
--- Indices de la tabla `libros_autores`
---
-ALTER TABLE `libros_autores`
-  ADD PRIMARY KEY (`id_libros`,`id_autores`),
-  ADD KEY `id_autores` (`id_autores`);
+  ADD UNIQUE KEY `nombre` (`nombre_libros`,`portada_libros`),
+  ADD KEY `id_autores` (`id_autores`,`id_generos`,`id_estado`),
+  ADD KEY `id_estado` (`id_estado`),
+  ADD KEY `id_generos` (`id_generos`);
 
 --
 -- Indices de la tabla `libros_capitulos`
@@ -274,20 +240,6 @@ ALTER TABLE `libros_autores`
 ALTER TABLE `libros_capitulos`
   ADD PRIMARY KEY (`id_libros`,`id_capitulos`),
   ADD KEY `id_capitulos` (`id_capitulos`);
-
---
--- Indices de la tabla `libros_estado`
---
-ALTER TABLE `libros_estado`
-  ADD PRIMARY KEY (`id_libros`,`id_estado`),
-  ADD KEY `id_estado` (`id_estado`);
-
---
--- Indices de la tabla `libros_generos`
---
-ALTER TABLE `libros_generos`
-  ADD PRIMARY KEY (`id_libros`,`id_generos`),
-  ADD KEY `id_generos` (`id_generos`);
 
 --
 -- Indices de la tabla `permisos_usuarios`
@@ -362,11 +314,12 @@ ALTER TABLE `libreria`
   ADD CONSTRAINT `libreria_ibfk_2` FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id_usuarios`);
 
 --
--- Filtros para la tabla `libros_autores`
+-- Filtros para la tabla `libros`
 --
-ALTER TABLE `libros_autores`
-  ADD CONSTRAINT `libros_autores_ibfk_1` FOREIGN KEY (`id_libros`) REFERENCES `libros` (`id_libros`),
-  ADD CONSTRAINT `libros_autores_ibfk_2` FOREIGN KEY (`id_autores`) REFERENCES `autores` (`id_autores`);
+ALTER TABLE `libros`
+  ADD CONSTRAINT `libros_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`),
+  ADD CONSTRAINT `libros_ibfk_2` FOREIGN KEY (`id_generos`) REFERENCES `generos` (`id_generos`),
+  ADD CONSTRAINT `libros_ibfk_3` FOREIGN KEY (`id_autores`) REFERENCES `autores` (`id_autores`);
 
 --
 -- Filtros para la tabla `libros_capitulos`
@@ -374,20 +327,6 @@ ALTER TABLE `libros_autores`
 ALTER TABLE `libros_capitulos`
   ADD CONSTRAINT `libros_capitulos_ibfk_1` FOREIGN KEY (`id_libros`) REFERENCES `libros` (`id_libros`),
   ADD CONSTRAINT `libros_capitulos_ibfk_2` FOREIGN KEY (`id_capitulos`) REFERENCES `capitulos` (`id_capitulos`);
-
---
--- Filtros para la tabla `libros_estado`
---
-ALTER TABLE `libros_estado`
-  ADD CONSTRAINT `libros_estado_ibfk_1` FOREIGN KEY (`id_libros`) REFERENCES `libros` (`id_libros`),
-  ADD CONSTRAINT `libros_estado_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`);
-
---
--- Filtros para la tabla `libros_generos`
---
-ALTER TABLE `libros_generos`
-  ADD CONSTRAINT `libros_generos_ibfk_1` FOREIGN KEY (`id_libros`) REFERENCES `libros` (`id_libros`),
-  ADD CONSTRAINT `libros_generos_ibfk_2` FOREIGN KEY (`id_generos`) REFERENCES `generos` (`id_generos`);
 
 --
 -- Filtros para la tabla `permisos_usuarios`
