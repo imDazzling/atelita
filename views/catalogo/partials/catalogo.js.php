@@ -1,7 +1,11 @@
 <script>
 	
-	function ordenarPopularidad(){
-		var urlBusqueda = '&orden=' + $("#orden").val();
+	function enviarBusqueda(){
+		var urlBusqueda = '&orden=' + $("#orden").val() +
+						  '&genero=' + $("#generos").val() +
+						  '&estado=' + $("#estado").val();
+
+
 
 		window.setTimeout( window.location = urlBusqueda, 100 );
 	}

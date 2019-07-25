@@ -30,21 +30,20 @@
         if ( $precio_hasta ){
             $consulta .= " AND pub_precio <= " . $precio_hasta;            
         }
-
-        if ( $id_categoria >= 0 )
+*/
+        if ( $id_generos >= 0 )
         {
-            
-            if ( $precio_desde ) {
-                $consulta .= " AND ";
-            }
-            else
-            {
                 $consulta .= " WHERE ";
             }
 
-            $consulta .= " pub_id_categoria = " . $id_categoria;
+        $consulta .= " id_generos = " . $id_generos;
 
-        }*/
+        if ( $id_estado >= 0 )
+        {
+                $consulta .= " WHERE ";
+            }
+
+            $consulta .= " id_estado = " . $id_estado;
 
     /*    $consulta .= " ORDER BY " . $orden; */
 

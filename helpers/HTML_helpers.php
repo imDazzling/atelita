@@ -127,11 +127,11 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_ge
     $opcionesGenero = "";
 
     if ($incluir_todoslosgeneros){
-      $opcionesGenero .= '<option value="-1">Todos los géneros</option>';
+      $opcionesGenero .= '<option onclick="enviarBusqueda();" value="-1">Todos los géneros</option>';
     }
 
     foreach ( $generos as $genero ){
-      $opcionesGenero .= '<option value="'. $genero["id"] . '"';
+      $opcionesGenero .= '<option onclick="enviarBusqueda();" value="'. $genero["id"] . '"';
 
       if ( $id_item_seleccionado != null && ($id_item_seleccionado == $genero["id_generos"]) ){
             $opcionesGenero .= 'selected="selected" ';
@@ -152,11 +152,11 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_ge
     $opcionesEstado = "";
 
     if ($incluir_todoslosestados){
-      $opcionesEstado .= '<option value="-1">Todos los estados</option>';
+      $opcionesEstado .= '<option onclick="enviarBusqueda();" value="-1">Todos los estados</option>';
     }
 
     foreach ( $estados as $estado ){
-      $opcionesEstado .= '<option value="'. $estado["id_estado"] . '"';
+      $opcionesEstado .= '<option onclick="enviarBusqueda();" value="'. $estado["id_estado"] . '"';
 
       if ( $id_item_seleccionado != null && ($id_item_seleccionado == $estado["id_estado"]) ){
             $opcionesEstado .= 'selected="selected" ';
