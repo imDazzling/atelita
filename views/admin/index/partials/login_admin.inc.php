@@ -12,5 +12,7 @@
             </div>
 
         </form>
+
+        <?php echo $mensaje_alerta ?>
     </div>
 </div>

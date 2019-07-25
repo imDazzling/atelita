@@ -36,33 +36,29 @@
         $content = PATH_VIEWS . "/admin/index/partials/login_admin.inc.php";
     }
     else{
-        $content = PATH_VIEWS . "/admin/index/partials/contenido_index_admin.inc.php";
+
+        $conexion = getConexion();
+
+        $consulta = "SELECT permisos_usuarios FROM `usuarios` WHERE nombre_usuarios='" . $_POST["usuario"] . "'";
+
+        $resultado = $conexion->query( $consulta );
+
+        $array_permisos = array();
+
+        $id_permisos = $resultado->fetch_assoc();
+
+        $array_permisos[] = $id_permisos["permisos_usuarios"];
+
+        if('1' == implode(" ",$array_permisos)){
+            $content = PATH_VIEWS . "/admin/index/partials/contenido_index_admin.inc.php";
+        }
+        else{
+            $mensaje_alerta = "Área restringida: Usuario sin acceso a esta área.";
+            $content = PATH_VIEWS . "/admin/index/partials/login_admin.inc.php";
+        }
     }
 
-    /*$contenido_listado  = PATH_VIEWS . "/index/partials/listado_index.inc.php";*/
-
     include( PATH_VIEWS . '/admin/common/base.php' );
-
-
-/* CONEXIÓN ÚNICA DE ADMIN
-
-$conexion = getConexion();
-
-        $consulta = "SELECT id_usuarios " .
-                    "FROM usuarios " .
-                    "WHERE nombre_usuarios = '" . $_POST["usuario"] . "'";
-
-        $resultado = $conexion->query($consulta);
-
-        $id_usuario = $resultado->fetch_assoc();
-
-        $consulta2 = "SELECT id_tipo_de_usuarios " .
-                     "FROM permisos_usuarios " .
-                     "WHERE id_usuarios = '" . $id_usuario ."'";
-
-        $resultado = $conexion->query($consulta2);
-
-        */
 
         
 ?>
