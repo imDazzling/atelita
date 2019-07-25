@@ -39,7 +39,7 @@
 
         $conexion = getConexion();
 
-        $consulta = "SELECT permisos_usuarios FROM `usuarios` WHERE nombre_usuarios='" . $_POST["usuario"] . "'";
+        $consulta = "SELECT permisos_usuarios FROM `usuarios` WHERE nombre_usuarios='" . $_SESSION["usuario"] . "'";
 
         $resultado = $conexion->query( $consulta );
 
