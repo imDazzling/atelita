@@ -10,11 +10,6 @@
     <label for="nombre">Nombre</label> 
     <input id="nombre" name="nombre" type="text" required="required" class="form-control">
   </div>
-
-  <div class="form-group">
-    <label for="descripcion">Descripcion</label>
-    <input id="descripcion" name="descripcion" type="text" required="required" class="form-control">
-  </div>
   
   <div class="form-group">
     <input id="guardar" name="guardar" value="Guardar" type="submit" class="btn btn-primary">

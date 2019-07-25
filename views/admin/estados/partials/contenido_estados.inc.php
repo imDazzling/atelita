@@ -1,6 +1,6 @@
 <?php
     
-    $nombre_modulo = "Estados";
+    $nombre_modulo = "estados";
 
     include ('funciones_estados.js.php');
 

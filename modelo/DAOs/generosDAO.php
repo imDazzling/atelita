@@ -20,10 +20,9 @@
         $conexion = getConexion();
 
         $sql = "INSERT INTO generos " . 
-                    "(nombre_generos, descripcion_generos)" 
+                    "(nombre_generos)" 
                         . " VALUES ('" 
-                        . $genero["nombre"]
-                     . $genero["descripcion"] . "')";
+                        . $genero["nombre"] . "')";
 
         $conexion->query( $sql );
 
@@ -35,7 +34,6 @@
 
         $sql = "UPDATE generos " . 
                 "SET nombre_generos = '" . $genero["nombre"] .
-                "SET descripcion_generos = '" . $genero["descripcion"] .
                 "' WHERE id_generos = " . $genero["id"]; 
                        
         $conexion->query( $sql );

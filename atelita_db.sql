@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-07-2019 a las 16:46:31
--- Versión del servidor: 10.3.15-MariaDB
+-- Tiempo de generación: 25-07-2019 a las 03:24:34
+-- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -134,24 +134,6 @@ CREATE TABLE `libros_capitulos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos_usuarios`
---
-
-CREATE TABLE `permisos_usuarios` (
-  `id_usuarios` int(11) NOT NULL,
-  `id_tipos_de_usuarios` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `permisos_usuarios`
---
-
-INSERT INTO `permisos_usuarios` (`id_usuarios`, `id_tipos_de_usuarios`) VALUES
-(1, 1);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `tipos_de_usuarios`
 --
 
@@ -178,15 +160,17 @@ CREATE TABLE `usuarios` (
   `id_usuarios` int(11) NOT NULL,
   `nombre_usuarios` varchar(30) NOT NULL,
   `password_usuarios` varchar(30) NOT NULL,
-  `email_usuarios` varchar(50) DEFAULT NULL
+  `email_usuarios` varchar(50) DEFAULT NULL,
+  `permisos_usuarios` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuarios`, `nombre_usuarios`, `password_usuarios`, `email_usuarios`) VALUES
-(1, 'admin', '123456', 'admin@atelita.com');
+INSERT INTO `usuarios` (`id_usuarios`, `nombre_usuarios`, `password_usuarios`, `email_usuarios`, `permisos_usuarios`) VALUES
+(2, 'admin', '123456', 'admin@atelita.com', 1),
+(3, 'Dazzling', '123456', 'dazzling@atelita.com', 2);
 
 --
 -- Índices para tablas volcadas
@@ -242,13 +226,6 @@ ALTER TABLE `libros_capitulos`
   ADD KEY `id_capitulos` (`id_capitulos`);
 
 --
--- Indices de la tabla `permisos_usuarios`
---
-ALTER TABLE `permisos_usuarios`
-  ADD PRIMARY KEY (`id_usuarios`,`id_tipos_de_usuarios`),
-  ADD KEY `id_tipos_de_usuarios` (`id_tipos_de_usuarios`);
-
---
 -- Indices de la tabla `tipos_de_usuarios`
 --
 ALTER TABLE `tipos_de_usuarios`
@@ -260,7 +237,8 @@ ALTER TABLE `tipos_de_usuarios`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuarios`),
   ADD UNIQUE KEY `nombre` (`nombre_usuarios`,`email_usuarios`),
-  ADD UNIQUE KEY `nombre_2` (`nombre_usuarios`,`email_usuarios`);
+  ADD UNIQUE KEY `nombre_2` (`nombre_usuarios`,`email_usuarios`),
+  ADD KEY `permisos_usuarios` (`permisos_usuarios`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -300,7 +278,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -329,11 +307,10 @@ ALTER TABLE `libros_capitulos`
   ADD CONSTRAINT `libros_capitulos_ibfk_2` FOREIGN KEY (`id_capitulos`) REFERENCES `capitulos` (`id_capitulos`);
 
 --
--- Filtros para la tabla `permisos_usuarios`
+-- Filtros para la tabla `usuarios`
 --
-ALTER TABLE `permisos_usuarios`
-  ADD CONSTRAINT `permisos_usuarios_ibfk_1` FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id_usuarios`),
-  ADD CONSTRAINT `permisos_usuarios_ibfk_2` FOREIGN KEY (`id_tipos_de_usuarios`) REFERENCES `tipos_de_usuarios` (`id_tipos_usuarios`);
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`permisos_usuarios`) REFERENCES `tipos_de_usuarios` (`id_tipos_usuarios`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

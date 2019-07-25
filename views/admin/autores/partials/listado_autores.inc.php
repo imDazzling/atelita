@@ -8,4 +8,4 @@
 
     $campos = [ "id_autores" => "ID", "nombre_autores" => "Nombre" ];
 
-	echo getTablaHTML($autor, $campos, "id_autores", "nombre_autores");
+	echo getTablaHTML($autor, $campos, "id_autores", "autores");

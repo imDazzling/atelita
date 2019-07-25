@@ -3,7 +3,7 @@
   <input id="id" name="id" type="hidden" value="1">
   
 
-  <input id="m" name="m" type="hidden" value="tipos_pubs">
+  <input id="m" name="m" type="hidden" value="autores">
   <input id="a" name="a" type="hidden" value="add">
 
   <div class="form-group">

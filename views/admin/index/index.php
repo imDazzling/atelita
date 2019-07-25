@@ -43,4 +43,27 @@
 
     include( PATH_VIEWS . '/admin/common/base.php' );
 
+
+/* CONEXIÓN ÚNICA DE ADMIN
+
+$conexion = getConexion();
+
+        $consulta = "SELECT id_usuarios " .
+                    "FROM usuarios " .
+                    "WHERE nombre_usuarios = '" . $_POST["usuario"] . "'";
+
+        $resultado = $conexion->query($consulta);
+
+        $id_usuario = $resultado->fetch_assoc();
+
+        $consulta2 = "SELECT id_tipo_de_usuarios " .
+                     "FROM permisos_usuarios " .
+                     "WHERE id_usuarios = '" . $id_usuario ."'";
+
+        $resultado = $conexion->query($consulta2);
+
+        */
+
+        
 ?>
+
