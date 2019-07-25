@@ -30,7 +30,7 @@ if ( isset($_REQUEST["a"]) ){
 
     case "list":
 
-      include "listado_libros_autor.inc.php"; 
+      include "listado_libros.inc.php"; 
       
       break;
 

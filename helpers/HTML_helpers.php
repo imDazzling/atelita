@@ -1,4 +1,87 @@
+<?php
+
+function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_generos, $id_libros, $id_estado, $largo, $on_library = false){
+?>  
+
+  <div class="col-md-3 mb-4 text-center d-flex align-items-stretch">
+
+
+  <div class="card">
+
+        <?php
+            if ( !$id_usuarios ) {
+
+                if ( $library ){
+                    $link = '<a class="nav-link p-0 m-2 text-right" href="index.php?m=lib';
+
+                    if ( isset($_GET["on_library"]) ){
+                       $link .= "&on_library";
+                    }
+
+                    
+                    $link .= "&a=del&id=" . $id_libros .'">' . '<img src="' . PATH_IMG . '/favorito.png' . '"></a>';
+
+                    echo $link;
+                }
+                else{
+                    echo '<a class="nav-link p-0 m-2 text-right" href="index.php?m=lib&a=add&id=' . $id_libros .'">' . '<img src="' . PATH_IMG . '/no_favorito.png' . '"></a>';
+                }
+                
+                echo '<a class="nav-link" href="index.php?m=show_pub&id=' . $id_libros .'">';
+
+            }
+        ?>
+
+    <div class="card-title mb-5 p-4">
+          
+      <?= $nombre ?>
+      </div>
+
+      <img class="card-img-top"  alt=""  src="<?= FILES . '/imagenes/portadas/' . $portada ?>">
+     
+        <?php
+            if ( !$id_usuarios ) {
+                echo '</a>';
+            }
+        ?>
+
+      <div class="card-img-top card-body">
+
+    </div>
+        
+
+
+
+        <div class="card-footer">
+          <?php echo $id_autores ;  
+
+              if ( $id_usuarios ) {
+              ?>
+              <div class="row py-2 mt-2 bg-light">
+            
+                <div class="col-12 ">
+                    <a class="btn px-4 btn-success" href="index.php?m=books&a=edit&id=<?=$id_libros?>" >Editar</a>
+                    <a class="btn px-4 btn-danger" href="index.php?m=books&a=del&id=<?=$id_libros?>" >Eliminar</a>
+                </div>
+
+              </div>              
+        
+         <?php } ?>
+
+        </div>
+
+
+
+  </div>
+
+
+
+  </div>
+
+
 <?php 
+
+}
 
   function getTablaHTML( $registros, $campos, $primary_key, $nombre_modulo ){
 

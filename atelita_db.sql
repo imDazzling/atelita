@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-07-2019 a las 03:24:34
+-- Tiempo de generación: 25-07-2019 a las 16:01:45
 -- Versión del servidor: 10.3.16-MariaDB
--- Versión de PHP: 7.3.6
+-- Versión de PHP: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,6 +32,14 @@ CREATE TABLE `autores` (
   `id_autores` int(11) NOT NULL,
   `nombre_autores` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `autores`
+--
+
+INSERT INTO `autores` (`id_autores`, `nombre_autores`) VALUES
+(1, 'Francisco José Stevan'),
+(2, 'Pedrito Pedrón');
 
 -- --------------------------------------------------------
 
@@ -119,6 +127,14 @@ CREATE TABLE `libros` (
   `id_generos` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `libros`
+--
+
+INSERT INTO `libros` (`id_libros`, `nombre_libros`, `descripcion_libros`, `portada_libros`, `id_autores`, `id_generos`, `id_estado`) VALUES
+(1, 'Libro Caso 1', 'Este es un ejemplo de libro en base de datos', '', 1, 1, 1),
+(2, 'Libro Caso 2', 'Este es un ejemplo de libro en base de datos', '', 2, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -248,7 +264,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `autores`
 --
 ALTER TABLE `autores`
-  MODIFY `id_autores` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_autores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `capitulos`
@@ -272,7 +288,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id_libros` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_libros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

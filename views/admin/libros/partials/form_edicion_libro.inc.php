@@ -28,7 +28,7 @@
 
                 include_once( PATH_DAOS . "/librosDAO.php");
 
-                $registros = buscarLiro($_REQUEST["id"]);
+                $registros = buscarLibro($_REQUEST["id"]);
 
                 $libro = mysqli_fetch_assoc($registros);
 

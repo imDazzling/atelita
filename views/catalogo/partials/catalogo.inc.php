@@ -24,6 +24,12 @@
 	</div>
 </div>
 
-<!-- Lista libros -->
+<div class="m-5 row">				
+				<?php
+
+					include ($contenido_listado);
+
+			    ?>
+			</div>
 
 </div>

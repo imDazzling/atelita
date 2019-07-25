@@ -46,7 +46,7 @@
 
         }*/
 
-        $consulta .= " ORDER BY " . $orden;
+    /*    $consulta .= " ORDER BY " . $orden; */
 
         $resultado = $conexion->query( $consulta );
 
@@ -104,8 +104,7 @@
                         . $publicacion["portada"] . ", "
                         . $publicacion["id_autores"] . ", "
                         . $publicacion["id_generos"] . ","
-                        . $publicacion["id_estado"] . ", '"
-                        . $publicacion["imagen"] . "'"
+                        . $publicacion["id_estado"] . "'"
 
                      . ")";
 

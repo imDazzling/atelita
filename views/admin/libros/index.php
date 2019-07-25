@@ -1,6 +1,8 @@
 <?php
 
-$content = PATH_VIEWS . "/publicaciones/partials/contenido_publicaciones.inc.php";
+include_once('../config/config.php');
+
+$content = PATH_VIEWS . "/admin/libros/partials/contenido_libros.inc.php";
 
 
-include( PATH_VIEWS . '/common/base.php' );
+include( PATH_VIEWS . '/admin/common/base.php' );
