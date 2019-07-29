@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-07-2019 a las 16:01:45
--- Versión del servidor: 10.3.16-MariaDB
--- Versión de PHP: 7.3.7
+-- Tiempo de generación: 29-07-2019 a las 18:27:24
+-- Versión del servidor: 10.3.15-MariaDB
+-- Versión de PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -99,7 +99,8 @@ INSERT INTO `generos` (`id_generos`, `nombre_generos`, `descripcion_generos`) VA
 (5, 'Infantil', 'Género de infantil'),
 (6, 'Horror', 'Género de horror'),
 (7, 'Ciencia Ficción', 'Género de ciencia ficción'),
-(8, 'Romance', 'Género de romance');
+(8, 'Romance', 'Género de romance'),
+(9, 'Misterio', '');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,6 @@ CREATE TABLE `libros` (
   `nombre_libros` varchar(40) NOT NULL,
   `descripcion_libros` varchar(250) NOT NULL,
   `portada_libros` varchar(50) NOT NULL,
-  `id_autores` int(11) NOT NULL,
   `id_generos` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -132,9 +132,29 @@ CREATE TABLE `libros` (
 -- Volcado de datos para la tabla `libros`
 --
 
-INSERT INTO `libros` (`id_libros`, `nombre_libros`, `descripcion_libros`, `portada_libros`, `id_autores`, `id_generos`, `id_estado`) VALUES
-(1, 'Libro Caso 1', 'Este es un ejemplo de libro en base de datos', '', 1, 1, 1),
-(2, 'Libro Caso 2', 'Este es un ejemplo de libro en base de datos', '', 2, 5, 2);
+INSERT INTO `libros` (`id_libros`, `nombre_libros`, `descripcion_libros`, `portada_libros`, `id_generos`, `id_estado`) VALUES
+(1, 'Libro Caso 1', 'Este es un ejemplo de libro en base de datos', '', 1, 1),
+(2, 'Libro Caso 2', 'Este es un ejemplo de libro en base de datos', '', 5, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `libros_autores`
+--
+
+CREATE TABLE `libros_autores` (
+  `id_libro` int(11) NOT NULL,
+  `id_autor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `libros_autores`
+--
+
+INSERT INTO `libros_autores` (`id_libro`, `id_autor`) VALUES
+(1, 1),
+(1, 2),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -230,9 +250,16 @@ ALTER TABLE `libreria`
 ALTER TABLE `libros`
   ADD PRIMARY KEY (`id_libros`),
   ADD UNIQUE KEY `nombre` (`nombre_libros`,`portada_libros`),
-  ADD KEY `id_autores` (`id_autores`,`id_generos`,`id_estado`),
+  ADD KEY `id_autores` (`id_generos`,`id_estado`),
   ADD KEY `id_estado` (`id_estado`),
   ADD KEY `id_generos` (`id_generos`);
+
+--
+-- Indices de la tabla `libros_autores`
+--
+ALTER TABLE `libros_autores`
+  ADD PRIMARY KEY (`id_libro`,`id_autor`),
+  ADD KEY `id_autor` (`id_autor`);
 
 --
 -- Indices de la tabla `libros_capitulos`
@@ -282,7 +309,7 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id_generos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_generos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `libros`
@@ -312,8 +339,14 @@ ALTER TABLE `libreria`
 --
 ALTER TABLE `libros`
   ADD CONSTRAINT `libros_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`),
-  ADD CONSTRAINT `libros_ibfk_2` FOREIGN KEY (`id_generos`) REFERENCES `generos` (`id_generos`),
-  ADD CONSTRAINT `libros_ibfk_3` FOREIGN KEY (`id_autores`) REFERENCES `autores` (`id_autores`);
+  ADD CONSTRAINT `libros_ibfk_2` FOREIGN KEY (`id_generos`) REFERENCES `generos` (`id_generos`);
+
+--
+-- Filtros para la tabla `libros_autores`
+--
+ALTER TABLE `libros_autores`
+  ADD CONSTRAINT `libros_autores_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `autores` (`id_autores`),
+  ADD CONSTRAINT `libros_autores_ibfk_2` FOREIGN KEY (`id_libro`) REFERENCES `libros` (`id_libros`);
 
 --
 -- Filtros para la tabla `libros_capitulos`

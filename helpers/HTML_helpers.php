@@ -1,7 +1,10 @@
 <?php
 
-function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_generos, $id_libros, $id_estado, $largo, $on_library = false){
+function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_libros, $id_estado, $largo, $on_library = false, $es_admin ){
+
 ?>  
+
+  
 
   <div class="col-md-3 mb-4 text-center d-flex align-items-stretch">
 
@@ -9,9 +12,9 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_ge
   <div class="card">
 
         <?php
-            if ( !$id_usuarios ) {
 
-                if ( $library ){
+
+                if ( $on_library ){
                     $link = '<a class="nav-link p-0 m-2 text-right" href="index.php?m=lib';
 
                     if ( isset($_GET["on_library"]) ){
@@ -29,7 +32,6 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_ge
                 
                 echo '<a class="nav-link" href="index.php?m=show_pub&id=' . $id_libros .'">';
 
-            }
         ?>
 
     <div class="card-title mb-5 p-4">
@@ -40,9 +42,9 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_ge
       <img class="card-img-top"  alt=""  src="<?= FILES . '/imagenes/portadas/' . $portada ?>">
      
         <?php
-            if ( !$id_usuarios ) {
+            
                 echo '</a>';
-            }
+           
         ?>
 
       <div class="card-img-top card-body">
@@ -53,9 +55,31 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_ge
 
 
         <div class="card-footer">
-          <?php echo $id_autores ;  
+          <?php 
 
-              if ( $id_usuarios ) {
+
+                $conexion = getConexion();
+
+                $consulta = "SELECT autores.nombre_autores
+
+                              FROM libros, autores, libros_autores
+
+                              WHERE libros.id_libros = libros_autores.id_libro AND 
+                              autores.id_autores = libros_autores.id_autor AND 
+
+                              libros.id_libros = $id_libros";
+
+
+                $autores = $conexion->query($consulta);
+
+                while ( $autor = $autores->fetch_assoc() ){
+
+                  echo "<p>" . $autor["nombre_autores"] . "</p>";
+                } 
+                
+
+
+              if ( $es_admin) {
               ?>
               <div class="row py-2 mt-2 bg-light">
             
@@ -131,7 +155,7 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_autores, $id_ge
     }
 
     foreach ( $generos as $genero ){
-      $opcionesGenero .= '<option onclick="enviarBusqueda();" value="'. $genero["id"] . '"';
+      $opcionesGenero .= '<option onclick="enviarBusqueda();" value="'. $genero["id_generos"] . '"';
 
       if ( $id_item_seleccionado != null && ($id_item_seleccionado == $genero["id_generos"]) ){
             $opcionesGenero .= 'selected="selected" ';

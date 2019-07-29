@@ -1,5 +1,5 @@
 <?php
-
+    
     include_once PATH_HELPERS . '/database_helper.php';
 
     if ( isset( $_POST["usuario"] )  && $_POST["pass"] != "" ){
@@ -19,7 +19,7 @@
                 $usuario = $resultado->fetch_assoc();
 
                 $_SESSION["usuario"] = $usuario["nombre_usuarios"];
-                
+                $_SESSION["permiso_usuario"] = $usuario["permisos_usuarios"];
 
             }
             else{
@@ -36,6 +36,8 @@
         $content = PATH_VIEWS . "/admin/index/partials/login_admin.inc.php";
     }
     else{
+
+
 
         $conexion = getConexion();
 

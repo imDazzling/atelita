@@ -19,6 +19,8 @@
 
 			$_SESSION["usuario"] = $usuario["nombre_usuarios"];
 			$_SESSION["id_usuarios"] = $usuario["id_usuarios"];
+			$_SESSION["permiso_usuario"]  = $usuario["permisos_usuarios"];
+
 
 			header("Location: index.php");
 		}

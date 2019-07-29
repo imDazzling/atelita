@@ -2,17 +2,20 @@
 
     include_once PATH_HELPERS . '/database_helper.php';
 
-	function buscarLibros($busqueda, $id_generos, $orden, $estado, $largo){
+	function buscarLibros($busqueda, $id_generos, $estado){
 
         $conexion = getConexion();
 
-        $consulta = "SELECT id_libros, nombre_libros, SUBSTRING(descripcion_libros, 1, 250) AS descripcion_libros, portada_libros, id_autores, id_generos, id_estado " . 
+        $consulta = "SELECT id_libros, nombre_libros, SUBSTRING(descripcion_libros, 1, 250) AS descripcion_libros, portada_libros, id_generos, id_estado " . 
                   "FROM libros ";
 
         if ( $busqueda != "" ){
 
            $consulta .= " WHERE (nombre_libros LIKE '%" . $busqueda . "%' OR descripcion_libros LIKE '%" . $busqueda . "%')";
         }
+
+        
+
 
         /*
 
@@ -31,19 +34,36 @@
             $consulta .= " AND pub_precio <= " . $precio_hasta;            
         }
 */
-        if ( $id_generos >= 0 )
+
+        if ( isset ( $_GET["generos"]) && $_GET["generos"] != -1 )
         {
+            if ( $busqueda != "" )
+            {
+                $consulta .= " AND ";
+            }
+            else
+            {
                 $consulta .= " WHERE ";
             }
 
-        $consulta .= " id_generos = " . $id_generos;
+            $consulta .= " id_generos = " . $id_generos;
+        }
 
-        if ( $id_estado >= 0 )
-        {
+
+        if ( isset ( $_GET["estados"]) && $_GET["estados"] != -1 ){
+           
+            if ( $busqueda == "" && isset ( $_GET["generos"]) && $_GET["generos"] == -1 )
+            {
                 $consulta .= " WHERE ";
             }
+            else
+            {
+                $consulta .= " AND ";
+            }
 
-            $consulta .= " id_estado = " . $id_estado;
+            $consulta .= " id_estado = " . $estado;
+        }
+
 
     /*    $consulta .= " ORDER BY " . $orden; */
 

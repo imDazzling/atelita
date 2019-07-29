@@ -37,12 +37,24 @@ $busqueda = "";
 
     */
 
+
+
+
     if ( isset( $_GET["on_library"]) )
 	{
-		$libros = buscarPublicacionesFavoritasUsuario( $_SESSION["id_usuario"] );
+		$libros = buscarLibreria( $_SESSION["id_usuario"] );
 	}
 	else{
-		$libros = buscarLibros( $busqueda, $id_generos, $orden, $estado, $largo );	
+
+        $estados = -1;
+
+        if ( isset( $_GET["estados"]) ){
+            $estados = $_GET["estados"];
+        }
+
+		$libros = buscarLibros( $busqueda, $id_generos,  $estados );
+
+
 	}
     
 
@@ -59,6 +71,6 @@ $busqueda = "";
 
 			$on_library = in_array( $libro['id_libros'], $library);
 
-			crearHTMLCardLibro($libro['nombre_libros'], $libro['portada_libros'], $libro['descripcion_libros'] . "...", $libro['id_autores'], "$ " . $libro['id_generos'], $libro['id_estado'], $libro['id_libros'], $on_library=false);
+			crearHTMLCardLibro($libro['nombre_libros'], $libro['portada_libros'], $libro['descripcion_libros'] . "...", "$ " , $libro['id_generos'], $libro['id_estado'], $libro['id_libros'], $on_library=false, $_SESSION["permiso_usuario"] == 1);
 		}
     }	
