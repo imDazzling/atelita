@@ -2,21 +2,21 @@
 
 <!-- Nav-filtros -->
 
-<div class="btn-toolbar d-flex justify-content-center" role="toolbar">
-	<div class="btn-group mr-2" role="group">
+<div class="btn-toolbar btn-group d-flex justify-content-center" role="toolbar">
+	
+	<form id="filtro-generos" role="group" action="" class="btn-group mr-2">
+	
 		<div class="btn">Filtros: </div>
-		
-		<form id="filtro-generos" action="">
 
 			<input type="hidden" name="m" value="catalogo">
 
-		  <select id="generos" name="generos" class="custom-select" for="busqueda">
+		  <select id="generos" name="generos" class="custom-select btn btn-secondary" for="busqueda">
 
 		    <?php echo getOptionsGeneros(true); ?>
 
 		  </select>
 
-		  <select id="estado" name="estados" class="custom-select" for="busqueda">
+		  <select id="estado" name="estados" class="custom-select btn btn-secondary" for="busqueda">
 
 		    <?php echo getOptionsEstado(true); ?>
 
@@ -26,13 +26,12 @@
 
 		<button type="button" class="btn btn-secondary" for="orden">Última actualización</button>-->
 
-		<input class="btn btn-primary" type="submit" value="Filtrar">
+		<input class="btn btn-secondary" type="submit" value="Filtrar">
 
-		</form>
-	</div>
+	</form>
 </div>
 
-<div class="m-5 row">				
+<div class="m-5 row">
 				<?php
 
 					include ($contenido_listado);

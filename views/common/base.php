@@ -19,14 +19,11 @@
 
 <!-- HEADER + NAVBAR -->
 <header>
-  <nav class="navbar navbar-header navbar-expand-md">
+  <nav class="navbar navbar-header navbar-expand-lg">
     <div class="container-fluid">
       <div class="navbar-brand"><a href="index.php"><img src="<?= PATH_IMG ?>/atelita_isomainwhite.png" alt="" id="logo"></a></div>
-      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="#navbarResponsive">
-        <ul class="navbar-nav mr-auto">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="index.php?m=catalogo">Catálogo</a>
           </li>
@@ -34,16 +31,15 @@
             <a class="nav-link" href="index.php?m=lib">Mi librería</a>
           </li>
         </ul>
-      </div>
       <div id="search-box">
-        <form id="search-nav" class="form-inline">
+        <form id="search-nav" class="form-inline my-2 my-lg-0">
           <div class="searchbar">
             <input class="search_input" type="text" name="" placeholder="Buscar...">
             <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
         </form>
       </div>
-      <div id="#navbarResponsive" class="navbar-login">
+      <div id="#navbarResponsive" class="navbar-login my-2 my-lg-0">
         <ul class="navbar-nav ml-md-auto">
 
           <?php 
@@ -67,6 +63,10 @@
 
         </ul>
       </div>
+      </div>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
   </nav>
 </header>

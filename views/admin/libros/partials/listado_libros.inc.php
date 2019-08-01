@@ -12,7 +12,7 @@
 
 	if ($libros){
 		foreach ($libros as $libro) {
-		crearHTMLCardLibro($libro['nombre_libros'], $libro['portada_libros'], $libro['descripcion_libros'] . "...", "$ " , $libro['id_generos'], $libro['id_estado'], $libro['id_libros'], false, $_SESSION["permiso_usuario"] == 1 );			   			
+		crearHTMLCardLibro($libro['nombre_libros'], $libro['portada_libros'], $libro['descripcion_libros'], $libro['id_generos'], $libro['id_libros'], $libro['id_estado'], '...' ,  false, $_SESSION["permiso_usuario"] == 1 );
 		}
     }	
 

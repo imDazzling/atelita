@@ -15,9 +15,9 @@ a{
          align-items: center;
      }
 }
+
 @media (max-width: 767px) {
     .navbar-header {
-        height: 120px;
         padding-top: 30px;
         padding-bottom: 22px;
     }
@@ -194,6 +194,16 @@ a:hover{
 
 #catalogo,#library,#lectura,.container{
   padding:1.5rem 3.6rem;
+}
+
+/* filtros */
+
+.btn-toolbar{
+  text-align: center;
+}
+
+.custom-select{
+  width:200px;
 }
 
 /* libros */

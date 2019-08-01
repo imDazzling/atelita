@@ -71,6 +71,6 @@ $busqueda = "";
 
 			$on_library = in_array( $libro['id_libros'], $library);
 
-			crearHTMLCardLibro($libro['nombre_libros'], $libro['portada_libros'], $libro['descripcion_libros'] . "...", "$ " , $libro['id_generos'], $libro['id_estado'], $libro['id_libros'], $on_library=false, $_SESSION["permiso_usuario"] == 1);
+			crearHTMLCardLibro($libro['nombre_libros'], $libro['portada_libros'], $libro['descripcion_libros'], $libro['id_generos'], $libro['id_libros'], $libro['id_estado'], '...' ,  false, false );
 		}
-    }	
+    }

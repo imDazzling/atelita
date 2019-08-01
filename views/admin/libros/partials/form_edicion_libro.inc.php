@@ -36,7 +36,7 @@
 
                 echo '<input type="hidden" name="id" value="' . $_REQUEST["id"] . '">';
 
-              }
+              
             
             ?>
 
@@ -118,3 +118,5 @@
         </form>
 
     </div>
+
+    <?php } ?>

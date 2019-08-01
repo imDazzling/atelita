@@ -30,7 +30,7 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
                     echo '<a class="nav-link p-0 m-2 text-right" href="index.php?m=lib&a=add&id=' . $id_libros .'">' . '<img src="' . PATH_IMG . '/no_favorito.png' . '"></a>';
                 }
                 
-                echo '<a class="nav-link" href="index.php?m=show_pub&id=' . $id_libros .'">';
+                echo '<a class="nav-link" href="index.php?m=book&id=' . $id_libros .'">';
 
         ?>
 
