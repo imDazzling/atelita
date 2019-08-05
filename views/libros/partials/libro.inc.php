@@ -1,9 +1,23 @@
+<?php 
+
+$conexion = getConexion();
+
+$libro = buscarLibros($libro['id_libros']);
+
+if($libro){
+    foreach($libro as $libros){
+        
+    }
+}
+
+ ?>
+
 <div class="container">
         	<div class="row">
                <div class="col-xs-4 item-photo">
                     <?php 
 
-                        if(isset($portada_libro)){
+                        if($libro){
                             include($portada_libro);
                         }
                         else{
@@ -18,7 +32,7 @@
                     <h3>
 
                         <?php
-                           if(isset($nombre_libro)){
+                           if($libro){
                                 include($nombre_libro);
                             }
                             else{
@@ -32,20 +46,33 @@
                     <h5 style="color:#337ab7">Escrito por <a href="#">
 
                         <?php
-                           if(isset($autor_libro)){
-                                include($autor_libro);
-                            }
-                            else{
-                                $autor_libro = "Nombre de autor";
-                                echo $autor_libro;
-                            }
+
+                        $conexion = getConexion();
+
+                        $consulta = "SELECT autores.nombre_autores
+
+                              FROM libros, autores, libros_autores
+
+                              WHERE libros.id_libros = libros_autores.id_libro AND 
+                              autores.id_autores = libros_autores.id_autor AND 
+
+                              libros.id_libros = $id_libros";
+
+
+                        $autores = $conexion->query($consulta);
+
+                        while ( $autor = $autores->fetch_assoc() ){
+
+                            echo "<p>" . $autor["nombre_autores"] . "</p>";
+                        }
+
                         ?>
 
                             
 
                     </a> · <small style="color:#337ab7">(En 
                         <?php
-                           if(isset($librarys_libro)){
+                           if($libro){
                                 include($librarys_libro);
                             }
                             else{
@@ -63,7 +90,7 @@
                             <div>
                                 
                                 <?php
-                                   if(isset($estado_libro)){
+                                   if($libro){
                                         include($estado_libro);
                                     }
                                     else{
@@ -81,7 +108,7 @@
                         <div>
                             <div>
                                 <?php
-                                   if(isset($largo_libro)){
+                                   if($libro){
                                         include($largo_libro);
                                     }
                                     else{
@@ -108,7 +135,7 @@
                             <small>
 
                                 <?php
-                                   if(isset($descripcion_libro)){
+                                   if($libro){
                                         include($descripcion_libro);
                                     }
                                     else{

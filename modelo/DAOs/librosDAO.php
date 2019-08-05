@@ -87,19 +87,6 @@
         return $resultado;
     }
 
-    function buscarLibrosPorAutor( $id_autor){
-        $conexion = getConexion();
-
-        $consulta = "SELECT id_libros, nombre_libros, SUBSTRING(descripcion_libros, 1, 250) AS descripcion_libros, portada_libros, id_autores, id_generos, id_estado " . 
-                  "FROM libros " . 
-                  "WHERE id_autores = " . $id_autor;
-
-
-        $resultado = $conexion->query( $consulta );
-
-        return $resultado;
-    }
-
     function eliminarLibro( $id_libro ){
 
         $conexion = getConexion();
