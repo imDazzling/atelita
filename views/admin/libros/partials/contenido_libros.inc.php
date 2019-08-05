@@ -1,7 +1,5 @@
 <?php
 
-
-
 include_once PATH_DAOS . '/librosDAO.php';
 
 if ( isset($_REQUEST["a"]) ){
@@ -13,8 +11,6 @@ if ( isset($_REQUEST["a"]) ){
       $libro["nombre"] = $_POST["nombre"];
 
       $libro["descripcion"] = $_POST["descripcion"];
-
-      $libro["id_autores"] = $_POST["autor"];
 
       $libro["id_generos"] = $_POST["genero"];
 
@@ -43,7 +39,10 @@ if ( isset($_REQUEST["a"]) ){
         break;
 
     case "del":
-        eliminarLibro( $_GET["id"] );
+
+        $libro["id"] = $_REQUEST["id"];
+
+        eliminarLibro( $libro );
 
         header( "Location: index.php?m=books&a=list&s=" . urlencode("Se ha eliminado el libro.") . "&t=success");
 
@@ -56,8 +55,6 @@ if ( isset($_REQUEST["a"]) ){
       $libro["nombre"] = $_POST["nombre"];
 
       $libro["descripcion"] = $_POST["descripcion"];
-
-      $libro["id_autores"] = $_POST["autor"];
 
       $libro["id_generos"] = $_POST["genero"];
 

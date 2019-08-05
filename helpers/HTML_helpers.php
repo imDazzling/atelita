@@ -84,8 +84,8 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
               <div class="row py-2 mt-2 bg-light">
             
                 <div class="col-12 ">
-                    <a class="btn px-4 btn-success" href="index.php?m=books&a=edit&id=<?=$id_libros?>" >Editar</a>
-                    <a class="btn px-4 btn-danger" href="index.php?m=books&a=del&id=<?=$id_libros?>" >Eliminar</a>
+                    <a role="button" class="btn px-4 btn-success" href="index.php?m=books&a=edit&id=<?=$id_libros?>" >Editar</a>
+                    <a role="button" class="btn px-4 btn-danger" href="index.php?m=books&a=del&id=<?=$id_libros?>" >Eliminar</a>
                 </div>
 
               </div>              

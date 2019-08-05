@@ -1,49 +1,27 @@
-<?php 
 
-$conexion = getConexion();
+<?php
 
-$libro = buscarLibros($libro['id_libros']);
+$registros = buscarLibro( $_REQUEST["id"] );
 
-if($libro){
-    foreach($libro as $libros){
-        
-    }
-}
+$libro = mysqli_fetch_assoc($registros);
 
- ?>
+?>
 
 <div class="container">
         	<div class="row">
                <div class="col-xs-4 item-photo">
-                    <?php 
+                    <img class="ml-5 img-fluid w-75 item-photo" alt="" src="<?=FILES . "/imagenes/portadas/" . $libro["portada_libros"]?>" />
 
-                        if($libro){
-                            include($portada_libro);
-                        }
-                        else{
-                            $portada_libro = '<img class="item-photo" src="' . 'https:/www.desnivel.com/images/2012/12/de-la-montana-y-el-amor-978-84-9829-267-1-660x991.jpg' . '"/>';
-                            echo $portada_libro;
-                        }
-
-                    ?>
                 </div>
-                <div class="col-xs-5" style="border:0px solid gray">
+                <div class="col-xs-5 col-6" style="border:0px solid gray">
                     <!-- Titulo del producto -->
                     <h3>
 
-                        <?php
-                           if($libro){
-                                include($nombre_libro);
-                            }
-                            else{
-                                $nombre_libro = "Nombre de libro";
-                                echo $nombre_libro;
-                            }
-                        ?>
+                        <?= $libro["nombre_libros"] ?>
                             
 
                     </h3>
-                    <h5 style="color:#337ab7">Escrito por <a href="#">
+                    <h5 style="color:#ad5389">Escrito por <a href="#">
 
                         <?php
 
@@ -56,28 +34,39 @@ if($libro){
                               WHERE libros.id_libros = libros_autores.id_libro AND 
                               autores.id_autores = libros_autores.id_autor AND 
 
-                              libros.id_libros = $id_libros";
+                              libros.id_libros =" . $libro['id_libros'];
 
 
                         $autores = $conexion->query($consulta);
 
                         while ( $autor = $autores->fetch_assoc() ){
 
-                            echo "<p>" . $autor["nombre_autores"] . "</p>";
+                            echo "<span>" . $autor["nombre_autores"] . " - </span>";
                         }
 
                         ?>
 
                             
 
-                    </a> · <small style="color:#337ab7">(En 
+                    </a><small style="color:#ad5389">(En 
                         <?php
-                           if($libro){
-                                include($librarys_libro);
-                            }
-                            else{
-                                echo "ninguna";
-                            }
+
+                            $conexion = getConexion();
+
+                            $consulta = "SELECT count(*) FROM `libreria` WHERE `id_libros`=" . $libro['id_libros'];
+
+                            $popularidad = $conexion->query($consulta);
+
+                            $array_librerias = array();
+
+                            $librerias = $popularidad->fetch_assoc();
+
+                            $array_librerias[] = $librerias["count(*)"];
+
+                            $librerias = implode(" ",$array_librerias);
+
+                            echo $librerias;
+
                         ?>
 
 
@@ -90,12 +79,25 @@ if($libro){
                             <div>
                                 
                                 <?php
-                                   if($libro){
-                                        include($estado_libro);
+
+                                    $conexion = getConexion();
+
+                                    $consulta = "SELECT estado.nombre_estado
+
+                                          FROM libros, estado
+
+                                          WHERE libros.id_estado = estado.id_estado AND 
+
+                                          libros.id_libros =" . $libro['id_libros'];
+
+
+                                    $estados = $conexion->query($consulta);
+
+                                    while ( $estado = $estados->fetch_assoc() ){
+
+                                        echo "<span>" . $estado["nombre_estado"] . "</span>";
                                     }
-                                    else{
-                                        echo "Inexistente";
-                                    }
+
                                 ?>
 
 
@@ -108,12 +110,7 @@ if($libro){
                         <div>
                             <div>
                                 <?php
-                                   if($libro){
-                                        include($largo_libro);
-                                    }
-                                    else{
-                                        echo "Infinito";
-                                    }
+                                   
                                 ?>
                             </div>
                         </div>
@@ -121,12 +118,12 @@ if($libro){
         
                     <!-- Agregar a librería o leer -->
                     <div class="section" style="padding-bottom:20px;">
-                        <a href="index.php?m=read"><button class="btn btn-leer"><span style="margin-right:20px" aria-hidden="true"><i class="fas fa-book"></i></span> LEER</button></a>
-                        <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Agregar a mi librería</a></h6>
+                        <a href="index.php?m=read&id=<?= $libro['id_libros'] ?>"><button class="btn btn-leer"><span style="margin-right:20px" aria-hidden="true"><i class="fas fa-book"></i></span> LEER</button></a>
+                        <h6><a href="index.php?m=lib&a=add&id=<?= $libro['id_libros'] ?>"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Agregar a mi librería</a></h6>
                     </div>
                 </div>
 
-                <div class="col-xs-9">
+                <div class="col-9">
                     <ul class="menu-items">
                         <li class="active">Sinopsis</li>
                     </ul>
@@ -134,14 +131,7 @@ if($libro){
                         <p style="padding:15px;">
                             <small>
 
-                                <?php
-                                   if($libro){
-                                        include($descripcion_libro);
-                                    }
-                                    else{
-                                        echo "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet esse, numquam nobis quos doloribus error veritatis nemo temporibus libero dolorum tenetur iste. Nobis alias voluptas tempora cumque molestias, pariatur tenetur!";
-                                    }
-                                ?>
+                                <?= $libro["descripcion_libros"] ?>
 
                             </small>
                         </p>

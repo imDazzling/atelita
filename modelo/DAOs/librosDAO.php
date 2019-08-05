@@ -87,12 +87,12 @@
         return $resultado;
     }
 
-    function eliminarLibro( $id_libro ){
+    function eliminarLibro( $libro ){
 
         $conexion = getConexion();
 
         $sql = "DELETE FROM libros " .         
-               " WHERE id_libros = " . $id_libro;
+               " WHERE id_libros = " . $libro["id"];
 
         $resultado = $conexion->query( $sql );
 
@@ -103,12 +103,11 @@
         $conexion = getConexion();
 
         $sql = "INSERT INTO libros " . 
-                    "(nombre_libros, descripcion_libros, portada_libros, id_autores, id_generos, id_estado)" 
+                    "(nombre_libros, descripcion_libros, portada_libros, id_generos, id_estado)" 
                         . " VALUES ('" 
                         . $publicacion["nombre"] . "', '"
                         . $publicacion["descripcion"] . "', "
                         . $publicacion["portada"] . ", "
-                        . $publicacion["id_autores"] . ", "
                         . $publicacion["id_generos"] . ","
                         . $publicacion["id_estado"] . "'"
 
@@ -127,7 +126,6 @@
                     ", descripcion_libros=\"" . $libro["descripcion"] . "\"". 
                     ", portada_libros=" . $libro["portada"] .
                     ", id_generos=" . $libro["id_generos"] .
-                    ", id_autores=" . $libro["id_autores"] .
                     ", id_estado=" . $libro["id_estado"];
 
         if ( $libro["portada"] ){

@@ -31,12 +31,12 @@
 	</form>
 </div>
 
-<div class="m-5 row">
+	<div class="m-5 row">
 				<?php
 
 					include ($contenido_listado);
 
 			    ?>
-			</div>
+	</div>
 
 </div>

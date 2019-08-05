@@ -16,7 +16,7 @@
                     <button onclick="mostrarEditor('nuevo');" id="btnNuevo" type="button" class="btn btn-primary">
                       Nuevo
                     </button>
-          </li>
+              </li>
             </ul>
 
           </div>

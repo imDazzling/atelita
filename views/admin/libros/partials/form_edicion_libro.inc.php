@@ -26,8 +26,6 @@
               if ( isset($_REQUEST["a"]) && $_REQUEST["a"] == 'edit' ) {
                 //Obtengo info del libro
 
-                include_once( PATH_DAOS . "/librosDAO.php");
-
                 $registros = buscarLibro($_REQUEST["id"]);
 
                 $libro = mysqli_fetch_assoc($registros);
@@ -47,8 +45,8 @@
               <select id="genero" name="genero" aria-describedby="categoriaHelpBlock" required="required" class="custom-select">
 
                 <?php
-                  include_once( PATH_HELPERS . "/html_helper.php");
 
+                  include_once PATH_DAOS . '/generosDAO.php';
                   echo getOptionsGeneros(false, $libro["id_generos"]);
                 ?>
 
@@ -86,8 +84,7 @@
               <select id="estado" name="estado" aria-describedby="tipo_publicacionHelpBlock" required="required" class="custom-select">
 
                 <?php
-                  include_once( PATH_HELPERS . "/html_helper.php");
-
+                  include_once PATH_DAOS . '/estadoDAO.php';
                   echo getOptionsEstado(false, $libro["id_estado"]);
                 ?>
 

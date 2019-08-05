@@ -2,11 +2,19 @@
 
 <div class="m-5 row ">					
 
+	<div class="navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+             
+              <li class="nav-item">
+                    <button id="btnNuevo" type="button" class="btn btn-primary">
+                      <a href="index.php?m=books&a=new">Nuevo</a>
+                    </button>
+              </li>
+            </ul>
+
+    </div>
+
 <?php
-
-    include_once( PATH_HELPERS . '/HTML_helpers.php');
-
-    include_once( PATH_DAOS . '/librosDAO.php');
 
     $libros = buscarLibros("", -1, -1); //trae todos
 
