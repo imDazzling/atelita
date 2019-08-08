@@ -37,21 +37,7 @@
     }
     else{
 
-
-
-        $conexion = getConexion();
-
-        $consulta = "SELECT permisos_usuarios FROM `usuarios` WHERE nombre_usuarios='" . $_SESSION["usuario"] . "'";
-
-        $resultado = $conexion->query( $consulta );
-
-        $array_permisos = array();
-
-        $id_permisos = $resultado->fetch_assoc();
-
-        $array_permisos[] = $id_permisos["permisos_usuarios"];
-
-        if('1' == implode(" ",$array_permisos)){
+        if($_SESSION["permiso_usuario"] == 1){
             $content = PATH_VIEWS . "/admin/index/partials/contenido_index_admin.inc.php";
         }
         else{

@@ -23,53 +23,50 @@
     <div class="container-fluid">
       <div class="navbar-brand"><a href="index.php"><img src="<?= PATH_IMG ?>/atelita_isomainwhite.png" alt="" id="logo"></a></div>
     </div>
+    <div id="#navbarResponsive" class="navbar-login my-2 my-lg-0">
+      <ul class="navbar-nav ml-md-auto">
+        <?php if(isset($_SESSION["usuario"])){ ?>
+          <li class="nav-item"><a class="nav-link" href="index.php?m=logout">Logout</a></li>
+        <?php } ?>
+      </ul>
+    </div>
   </nav>
 </header>
 
-<?php 
+<?php if(isset($_SESSION["usuario"]) && ($_SESSION["permiso_usuario"] == 1)){?>
 
-  if(isset($content)){
-    include($content);
-  }
-
-?>
-
-<!-- Footer -->
-<footer>
 <nav class="navbar navbar-expand-md navbar-light bg-light text-center">
   <div class="container-fluid justify-content-center">
       <div class="navbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">dadad</a>
+          <a class="nav-link" href="index.php?m=generos">Géneros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">asdadasd</a>
+          <a class="nav-link" href="index.php?m=estados">Estados</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">asfafafasf</a>
+          <a class="nav-link" href="index.php?m=autores">Autores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">afsafasfasfas</a>
+          <a class="nav-link" href="index.php?m=books&a=list">Libros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">afssafasf</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">afasfafasfas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">asfafsafasf</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">asfsafsafas</a>
+          <a class="nav-link" href="index.php?m=caps">Capítulos</a>
         </li>
       </ul>
       </div>
     </div>
   </div>
 </nav>
-</footer>
+
+<?php }
+
+  if(isset($content)){
+    include($content);
+  }
+
+?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
