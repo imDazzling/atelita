@@ -1,3 +1,4 @@
+
 <?php
 
 include_once PATH_DAOS . '/librosDAO.php';
@@ -14,7 +15,10 @@ if ( isset($_REQUEST["a"]) ){
 
       $libro["id_generos"] = $_POST["genero"];
 
-      $libro["id_estado"] = $_SESSION["estado"];
+      $libro["id_estado"] = $_POST["estado"];
+
+      $libro["autores"] = $_POST['autor'];
+
 
       subirPortadaYGuardar($libro);
 
@@ -60,7 +64,7 @@ if ( isset($_REQUEST["a"]) ){
 
       $libro["id_estado"] = $_POST["estado"];
 
-      $libro["portada"] = null;
+      $libro["autores"] = $_POST['autor'];
 
       //Guardo la portada del libro
       subirPortadaYGuardar($libro, true);

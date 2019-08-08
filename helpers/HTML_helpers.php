@@ -39,7 +39,7 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
       <?= $nombre ?>
       </div>
 
-      <img class="card-img-top"  alt=""  src="<?= FILES . '/imagenes/portadas/' . $portada ?>">
+      <img class="card-img-top"  alt=""  src="<?= PATH_FILES . '/imagenes/portadas/' . $portada ?>">
      
         <?php
             
@@ -192,7 +192,7 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
     return $opcionesEstado;
   }
 
-  function getOptionsAutores($incluir_todoslosautores = false, $id_item_seleccionado = null){
+  function getOptionsAutores($incluir_todoslosautores = false, $id_items_seleccionados = null){
     
     $conexion = getConexion();
 
@@ -207,7 +207,7 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
     foreach ( $autores as $autor ){
       $opcionesAutor .= '<option class="autor-lista" value="'. $autor["id_autores"] . '"';
 
-      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $autor["id_autores"]) ){
+      if ( $id_items_seleccionados != null && (in_array($autor["id_autores"], $id_items_seleccionados) ) ){
             $opcionesAutor .= 'selected="selected" ';
       }
 

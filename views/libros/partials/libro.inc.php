@@ -9,8 +9,8 @@ $libro = mysqli_fetch_assoc($registros);
 
 <div class="container">
         	<div class="row">
-               <div class="col-xs-4 item-photo">
-                    <img class="ml-5 img-fluid w-75 item-photo" alt="" src="<?=FILES . "/imagenes/portadas/" . $libro["portada_libros"]?>" />
+               <div class="col-xs-4">
+                    <img class="img-fluid item-photo" alt="" src="<?=PATH_FILES . "/imagenes/portadas/" . $libro["portada_libros"]?>" />
 
                 </div>
                 <div class="col-xs-5 col-6" style="border:0px solid gray">
@@ -25,19 +25,9 @@ $libro = mysqli_fetch_assoc($registros);
 
                         <?php
 
-                        $conexion = getConexion();
+                       
+                        $autores = getAutoresDelLibro( $libro['id_libros'] );
 
-                        $consulta = "SELECT autores.nombre_autores
-
-                              FROM libros, autores, libros_autores
-
-                              WHERE libros.id_libros = libros_autores.id_libro AND 
-                              autores.id_autores = libros_autores.id_autor AND 
-
-                              libros.id_libros =" . $libro['id_libros'];
-
-
-                        $autores = $conexion->query($consulta);
 
                         while ( $autor = $autores->fetch_assoc() ){
 

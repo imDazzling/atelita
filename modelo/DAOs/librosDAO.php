@@ -87,10 +87,38 @@
         return $resultado;
     }
 
+    function getAutoresDelLibro( $id_libro ){
+        $conexion = getConexion();
+
+        $consulta = "SELECT autores.id_autores, autores.nombre_autores
+
+              FROM libros, autores, libros_autores
+
+              WHERE libros.id_libros = libros_autores.id_libro AND 
+              autores.id_autores = libros_autores.id_autor AND 
+
+              libros.id_libros =" . $id_libro;
+
+
+        $autores = $conexion->query($consulta);
+
+        return $autores;
+
+    }
+
     function eliminarLibro( $libro ){
 
         $conexion = getConexion();
 
+
+        //Borro los autores asociados al libro
+        $sql = "DELETE FROM libros_autores " .         
+               " WHERE id_libro = " . $libro["id"];
+
+        $resultado = $conexion->query( $sql );
+
+
+        //Borro el libro
         $sql = "DELETE FROM libros " .         
                " WHERE id_libros = " . $libro["id"];
 
@@ -105,15 +133,31 @@
         $sql = "INSERT INTO libros " . 
                     "(nombre_libros, descripcion_libros, portada_libros, id_generos, id_estado)" 
                         . " VALUES ('" 
-                        . $publicacion["nombre"] . "', '"
-                        . $publicacion["descripcion"] . "', "
-                        . $publicacion["portada"] . ", "
-                        . $publicacion["id_generos"] . ","
-                        . $publicacion["id_estado"] . "'"
+                        . $libro["nombre"] . "', '"
+                        . $libro["descripcion"] . "', '"
+                        . $libro["portada"] . "', "
+                        . $libro["id_generos"] . ","
+                        . $libro["id_estado"] 
 
                      . ")";
 
         $conexion->query( $sql );
+
+
+        $ultimoIdLibro = $conexion->insert_id;
+
+        foreach ($libro["autores"] as $autorDelLibro) {
+            
+            $sql = "INSERT INTO libros_autores " . 
+                        "(id_libro, id_autor)" 
+                            . " VALUES (" 
+                            . $ultimoIdLibro  . ", "
+                            . $autorDelLibro 
+                         . ")";
+
+
+            $conexion->query( $sql );       
+        }
 
     }
 
@@ -124,7 +168,6 @@
         $sql = "UPDATE libros SET " . 
                     "nombre_libros= \"" . $libro["nombre"] . "\"" .
                     ", descripcion_libros=\"" . $libro["descripcion"] . "\"". 
-                    ", portada_libros=" . $libro["portada"] .
                     ", id_generos=" . $libro["id_generos"] .
                     ", id_estado=" . $libro["id_estado"];
 
@@ -134,11 +177,25 @@
         
         $sql .= " WHERE id_libros = " . $libro["id"];
 
+        $conexion->query( $sql );
 
+        $sql = "DELETE FROM libros_autores " .
+               " WHERE id_libro = " . $libro["id"];
 
         $conexion->query( $sql );
 
+        //cargo nuevos autores
+        foreach ($libro["autores"] as $autorDelLibro) {
+            
+            $sql = "INSERT INTO libros_autores " . 
+                    "(id_libro, id_autor)" 
+                    . " VALUES (" 
+                    . $libro[id]  . ", "
+                    . $autorDelLibro 
+                    . ")";
 
+            $conexion->query($sql);
+        }
 
     }
 ?>

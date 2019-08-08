@@ -35,7 +35,7 @@
                 echo '<input type="hidden" name="id" value="' . $_REQUEST["id"] . '">';
 
               
-            
+              }
             ?>
 
             <input type="hidden" name="a" value="<?= $action?>">
@@ -73,7 +73,29 @@
 
           <div class="form-group">
             <label for="titulo">Autor</label> 
-            <input id="Autor" name="Autor" type="number" required="required" class="form-control" value="<?=isset($libro["id_autores"])?$libro["id_autores"]:'';?>"> 
+
+              <select multiple id="autor" name="autor[]" aria-describedby="categoriaHelpBlock" required="required" class="custom-select">
+                <?php
+
+                  include_once PATH_DAOS . '/autoresDAO.php';
+
+                  $autoresDelLibro = [];
+
+                  if ( isset($_REQUEST["a"]) && $_REQUEST["a"] == 'edit'){
+                    $autores = getAutoresDelLibro($_REQUEST["id"]);
+
+                    
+                    foreach ($autores as $autor) {
+                      $autoresDelLibro[] = $autor['id_autores'];
+                    }
+                  }
+
+                  echo getOptionsAutores(false, $autoresDelLibro);
+
+   
+                ?>
+
+              </select>
             
           </div>
 
@@ -97,7 +119,7 @@
           <div class="form-group">
             <label for="portada">Portada</label> 
 
-            <img class="card-img-top mb-2"  alt=""  src="<?= FILES . '/imagenes/portadas/' . $libro["portada_libros"] ?>">
+            <img class="card-img-top mb-2"  alt=""  src="<?= PATH_FILES . '/imagenes/portadas/' . $libro["portada_libros"] ?>">
 
             <input id="portada" name="portada" type="file" class="form-control-file" 
 
@@ -115,5 +137,3 @@
         </form>
 
     </div>
-
-    <?php } ?>
