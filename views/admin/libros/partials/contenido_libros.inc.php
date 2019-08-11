@@ -26,8 +26,8 @@ if ( isset($_REQUEST["a"]) ){
 
     case "new":
 
-      include "form_edicion_libro.inc.php";    
-
+      include "form_edicion_libro.inc.php";
+      
       break;
 
     case "list":

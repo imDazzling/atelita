@@ -1,6 +1,6 @@
 <?php
 
-function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_libros, $id_estado, $largo, $on_library = false, $es_admin ){
+function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_libros, $id_estado, $on_library = false, $es_admin ){
 
 ?>  
 
@@ -55,22 +55,9 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
 
 
         <div class="card-footer">
-          <?php 
+          <?php
 
-
-                $conexion = getConexion();
-
-                $consulta = "SELECT autores.nombre_autores
-
-                              FROM libros, autores, libros_autores
-
-                              WHERE libros.id_libros = libros_autores.id_libro AND 
-                              autores.id_autores = libros_autores.id_autor AND 
-
-                              libros.id_libros = $id_libros";
-
-
-                $autores = $conexion->query($consulta);
+                $autores = getAutoresDelLibro( $id_libros );
 
                 while ( $autor = $autores->fetch_assoc() ){
 
@@ -132,6 +119,41 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
       $tablaHTML .= "<td>";
 
       $tablaHTML .= "<button onclick=\"mostrarEditor('modificar', " . $registro[$primary_key]  . ");\" class=\"btn btn-success btn-sm\">Editar</button>";
+
+      $tablaHTML .= "<a role=\"button\" class=\"btn btn-danger btn-sm ml-1  \" href='index.php?m=" . $nombre_modulo . "&a=del&id=" . $registro[$primary_key] . "'>Eliminar</a>";
+    }
+
+    $tablaHTML .= "</table>";
+
+    return $tablaHTML;
+
+  }
+
+  function getTablaHTMLCaps( $registros, $campos, $primary_key, $nombre_modulo ){
+
+    $tablaHTML = "<table class=\"table table-hover\">";
+
+        $tablaHTML .= "<thead><tr>";
+
+        foreach ($campos as $campo => $label){
+          $tablaHTML .= "<th>$label</th>";
+        }
+
+        $tablaHTML .= "<th>Acciones</th></tr></thead>";
+
+    while ( $registro = $registros->fetch_assoc() ){
+
+      $tablaHTML .= '<tr id="' . $registro[$primary_key] . '">';
+
+      foreach ($campos as $campo => $label){
+
+        $tablaHTML .= '<td>' . $registro[ "$campo" ] . "</td>";
+
+      }
+      
+      $tablaHTML .= "<td>";
+
+      $tablaHTML .= "<a role=\"button\" class=\"btn btn-success btn-sm ml-1  \" href='index.php?m=" . $nombre_modulo . "&a=edit&id=" . $registro[$primary_key] . "'>Editar</button>";
 
       $tablaHTML .= "<a role=\"button\" class=\"btn btn-danger btn-sm ml-1  \" href='index.php?m=" . $nombre_modulo . "&a=del&id=" . $registro[$primary_key] . "'>Eliminar</a>";
     }
@@ -215,4 +237,54 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
     }
 
     return $opcionesAutor;
+  }
+
+  function getOptionsLibros($incluir_todosloslibros = false, $id_item_seleccionado = null){
+    
+    $conexion = getConexion();
+
+    $libros = buscarLibroNombres();
+
+    $opcionesLibro = "";
+
+    if ($incluir_todosloslibros){
+      $opcionesLibro .= '<option onclick="enviarBusqueda();" value="-1">Todos los libros</option>';
+    }
+
+    foreach ( $libros as $libro ){
+      $opcionesLibro .= '<option onclick="enviarBusqueda();" value="'. $libro["id_libros"] . '"';
+
+      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $libro["id_libros"]) ){
+            $opcionesLibro .= 'selected="selected" ';
+      }
+
+      $opcionesLibro .= '>' . $libro["nombre_libros"] . '</option>';
+    }
+
+    return $opcionesLibro;
+  }
+
+  function getOptionsCapitulos($incluir_todosloscapitulos = false, $id_item_seleccionado = null){
+    
+    $conexion = getConexion();
+
+    $capitulos = buscarCapitulos($id_item_seleccionado);
+
+    $opcionesCapitulo = "";
+
+    if ($incluir_todosloscapitulos){
+      $opcionesCapitulo .= '<option value="-1">Todos los capítulos</option>';
+    }
+
+    foreach ( $capitulos as $capitulo ){
+      $opcionesCapitulo .= '<option value="'. $capitulo["id_capitulos"] . '"';
+
+      if ( $id_item_seleccionado != null && ($id_item_seleccionado == $capitulo["id_capitulos"]) ){
+            $opcionesCapitulo .= 'selected="selected" ';
+      }
+
+      $opcionesCapitulo .= '>' . $capitulo["nombre_capitulos"] . '</a></option>';
+    }
+
+    return $opcionesCapitulo;
   }

@@ -7,13 +7,13 @@
 getSize();
 
 $( "#up" ).on( "click", function() {
-  if (size + 2) {
-    $( "#lectura" ).css( "font-size", "+=2" );
+  if (size + 5) {
+    $( "#lectura" ).css( "font-size", "+=5" );
 }
 });
 $( "#down" ).on( "click", function() {
-  if ((size - 2) >= 12) {
-    $( "#lectura" ).css( "font-size", "-=2" );
+  if ((size - 5)) {
+    $( "#lectura" ).css( "font-size", "-=5" );
 }
 });
 </script>
@@ -21,13 +21,13 @@ $( "#down" ).on( "click", function() {
 <script>
   $(document).ready(function() {
   $( "#bgwhite" ).on("click", function() {
-    $('#lectura').addClass('bgwhite').removeClass('bggrey bgblack');
+    $('body').addClass('bgwhite').removeClass('bggrey bgblack');
   });
   $( "#bggrey" ).on("click", function() {
-    $('#lectura').addClass('bggrey').removeClass('bgwhite bgblack');
+    $('body').addClass('bggrey').removeClass('bgwhite bgblack');
   });
   $( "#bgblack" ).on("click", function() {
-    $('#lectura').addClass('bgblack').removeClass('bggrey bgwhite');
+    $('body').addClass('bgblack').removeClass('bggrey bgwhite');
   });
 });
 </script>

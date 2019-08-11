@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-07-2019 a las 18:27:24
--- Versión del servidor: 10.3.15-MariaDB
+-- Tiempo de generación: 11-08-2019 a las 04:41:47
+-- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -49,10 +49,20 @@ INSERT INTO `autores` (`id_autores`, `nombre_autores`) VALUES
 
 CREATE TABLE `capitulos` (
   `id_capitulos` int(11) NOT NULL,
+  `id_libro` int(25) NOT NULL,
   `numero_capitulos` varchar(4) NOT NULL,
   `nombre_capitulos` varchar(30) NOT NULL,
-  `descripcion_capitulos` varchar(150) NOT NULL
+  `descripcion_capitulos` varchar(150) NOT NULL,
+  `contenido_capitulos` varchar(15000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `capitulos`
+--
+
+INSERT INTO `capitulos` (`id_capitulos`, `id_libro`, `numero_capitulos`, `nombre_capitulos`, `descripcion_capitulos`, `contenido_capitulos`) VALUES
+(1, 1, '1', 'Ejemplo capítulo 1', '', ''),
+(2, 1, '2', 'Ejemplo capítulo 2', '', '<p>Pedro saludó.</p><p>Matias le contestó.</p><p>Marcos gritó.</p>');
 
 -- --------------------------------------------------------
 
@@ -113,6 +123,14 @@ CREATE TABLE `libreria` (
   `id_libros` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `libreria`
+--
+
+INSERT INTO `libreria` (`id_usuarios`, `id_libros`) VALUES
+(3, 1),
+(3, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -133,8 +151,9 @@ CREATE TABLE `libros` (
 --
 
 INSERT INTO `libros` (`id_libros`, `nombre_libros`, `descripcion_libros`, `portada_libros`, `id_generos`, `id_estado`) VALUES
-(1, 'Libro Caso 1', 'Este es un ejemplo de libro en base de datos', '', 1, 1),
-(2, 'Libro Caso 2', 'Este es un ejemplo de libro en base de datos', '', 5, 2);
+(1, 'Libro Caso 1', 'Este es un ejemplo de libro en base de datos', '906b4a5b985a1e90eab72c62a0e07884.jpg', 1, 1),
+(2, 'Libro Caso 2', 'Este es un ejemplo de libro en base de datos', 'f801d7e68eb5dd9595fde9a259ad85b5.jpg', 5, 2),
+(4, 'Libro Caso 3', 'Este es un ejemplo de libro en base de datos', 'f801d7e68eb5dd9595fde9a259ad85b5.jpg', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -155,17 +174,6 @@ INSERT INTO `libros_autores` (`id_libro`, `id_autor`) VALUES
 (1, 1),
 (1, 2),
 (2, 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `libros_capitulos`
---
-
-CREATE TABLE `libros_capitulos` (
-  `id_libros` int(11) NOT NULL,
-  `id_capitulos` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -223,7 +231,8 @@ ALTER TABLE `autores`
 -- Indices de la tabla `capitulos`
 --
 ALTER TABLE `capitulos`
-  ADD PRIMARY KEY (`id_capitulos`);
+  ADD PRIMARY KEY (`id_capitulos`),
+  ADD KEY `id_libro` (`id_libro`);
 
 --
 -- Indices de la tabla `estado`
@@ -262,13 +271,6 @@ ALTER TABLE `libros_autores`
   ADD KEY `id_autor` (`id_autor`);
 
 --
--- Indices de la tabla `libros_capitulos`
---
-ALTER TABLE `libros_capitulos`
-  ADD PRIMARY KEY (`id_libros`,`id_capitulos`),
-  ADD KEY `id_capitulos` (`id_capitulos`);
-
---
 -- Indices de la tabla `tipos_de_usuarios`
 --
 ALTER TABLE `tipos_de_usuarios`
@@ -297,7 +299,7 @@ ALTER TABLE `autores`
 -- AUTO_INCREMENT de la tabla `capitulos`
 --
 ALTER TABLE `capitulos`
-  MODIFY `id_capitulos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_capitulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -315,7 +317,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id_libros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_libros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -326,6 +328,12 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `capitulos`
+--
+ALTER TABLE `capitulos`
+  ADD CONSTRAINT `capitulos_ibfk_1` FOREIGN KEY (`id_libro`) REFERENCES `libros` (`id_libros`);
 
 --
 -- Filtros para la tabla `libreria`
@@ -347,13 +355,6 @@ ALTER TABLE `libros`
 ALTER TABLE `libros_autores`
   ADD CONSTRAINT `libros_autores_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `autores` (`id_autores`),
   ADD CONSTRAINT `libros_autores_ibfk_2` FOREIGN KEY (`id_libro`) REFERENCES `libros` (`id_libros`);
-
---
--- Filtros para la tabla `libros_capitulos`
---
-ALTER TABLE `libros_capitulos`
-  ADD CONSTRAINT `libros_capitulos_ibfk_1` FOREIGN KEY (`id_libros`) REFERENCES `libros` (`id_libros`),
-  ADD CONSTRAINT `libros_capitulos_ibfk_2` FOREIGN KEY (`id_capitulos`) REFERENCES `capitulos` (`id_capitulos`);
 
 --
 -- Filtros para la tabla `usuarios`

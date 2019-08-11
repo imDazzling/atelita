@@ -58,7 +58,7 @@
 	}
 
 	$content= PATH_VIEWS . "/library/partials/library.inc.php";
-	$contenido_listado= PATH_VIEWS . "/catalogo/partials/contenido_listado.inc.php";
+	$contenido_listado= PATH_VIEWS . "/library/partials/contenido_listado.inc.php";
 	include( PATH_VIEWS . '/common/base.php' );
 
 ?>

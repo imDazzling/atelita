@@ -2,7 +2,7 @@
 
     include_once PATH_HELPERS . '/database_helper.php';
 
-	function buscarLibros($busqueda, $id_generos, $estado){
+	function buscarLibros($busqueda, $id_generos, $estado, $on_library = false){
 
         $conexion = getConexion();
 
@@ -13,27 +13,6 @@
 
            $consulta .= " WHERE (nombre_libros LIKE '%" . $busqueda . "%' OR descripcion_libros LIKE '%" . $busqueda . "%')";
         }
-
-        
-
-
-        /*
-
-        if ( $precio_desde ){
-
-            if ( $busqueda == "" ){
-                $consulta .= " WHERE ";
-            }else{
-                $consulta .= " AND ";
-            }
-
-            $consulta .= " pub_precio >= " . $precio_desde;            
-        }
-
-        if ( $precio_hasta ){
-            $consulta .= " AND pub_precio <= " . $precio_hasta;            
-        }
-*/
 
         if ( isset ( $_GET["generos"]) && $_GET["generos"] != -1 )
         {
@@ -64,8 +43,17 @@
             $consulta .= " id_estado = " . $estado;
         }
 
+        if ( isset($on_library) && $on_library != false ){
+            if ( $busqueda == "" && isset ( $_GET["generos"]) && $_GET["generos"] == -1 && isset ( $_GET["estados"]) && $_GET["estados"] == -1 || $busqueda = "" ){
+                $consulta .= " WHERE ";
+            }
+            else{
+                $consulta .= " AND ";
+            }
 
-    /*    $consulta .= " ORDER BY " . $orden; */
+            $consulta .= " id_libros = " . $on_library;
+
+        }
 
         $resultado = $conexion->query( $consulta );
 
@@ -81,6 +69,19 @@
         $consulta = "SELECT * " . 
                   "FROM libros " . 
                   "WHERE id_libros = " . $id_libro;
+
+        $resultado = $conexion->query( $consulta );
+
+        return $resultado;
+    }
+
+    function buscarLibroNombres(){
+
+        $conexion = getConexion();
+
+        $consulta = "SELECT * " . 
+                    "FROM libros " .
+                    "ORDER BY nombre_libros";
 
         $resultado = $conexion->query( $consulta );
 

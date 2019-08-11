@@ -21,7 +21,7 @@ $libro = mysqli_fetch_assoc($registros);
                             
 
                     </h3>
-                    <h5 style="color:#ad5389">Escrito por <a href="#">
+                    <h5 style="color:#ad5389">Escrito por
 
                         <?php
 
@@ -38,7 +38,7 @@ $libro = mysqli_fetch_assoc($registros);
 
                             
 
-                    </a><small style="color:#ad5389">(En 
+                    <small style="color:#ad5389">(En 
                         <?php
 
                             $conexion = getConexion();

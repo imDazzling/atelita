@@ -2,6 +2,19 @@
 
     include_once PATH_HELPERS . '/database_helper.php';
 
+    function buscarTodosLosCapitulos(){
+
+        $conexion = getConexion();
+
+        $consulta = "SELECT * " . 
+                    "FROM capitulos " .
+                    "ORDER BY id_libro";
+
+        $resultado = $conexion->query( $consulta );
+
+        return $resultado;
+    }
+
 	function buscarCapitulos($libro){
 
         $conexion = getConexion();

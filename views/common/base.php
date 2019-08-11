@@ -28,7 +28,7 @@
             <a class="nav-link" href="index.php?m=catalogo">Catálogo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php?m=lib">Mi librería</a>
+            <a class="nav-link" href="index.php?m=lib&generos=-1&estados=-1">Mi librería</a>
           </li>
         </ul>
       <div id="search-box">

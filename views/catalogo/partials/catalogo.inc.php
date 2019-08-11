@@ -22,10 +22,6 @@
 
 		  </select>
 
-		<!--<button onclick="enviarBusqueda();" type="button" class="btn btn-secondary" for="orden">Popularidad</button>
-
-		<button type="button" class="btn btn-secondary" for="orden">Última actualización</button>-->
-
 		<input class="btn btn-secondary" type="submit" value="Filtrar">
 
 	</form>

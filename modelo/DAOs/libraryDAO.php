@@ -8,7 +8,7 @@
 
         $consulta = "SELECT id_libros " . 
                     "FROM libreria " .
-                    "WHERE id_usuarios=" . $id_usuario;
+                    "WHERE id_usuarios = " . $id_usuario;
 
         $resultado = $conexion->query( $consulta );
 

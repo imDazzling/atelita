@@ -52,7 +52,7 @@
           <a class="nav-link" href="index.php?m=books&a=list">Libros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?m=caps">Capítulos</a>
+          <a class="nav-link" href="index.php?m=caps&a=list">Capítulos</a>
         </li>
       </ul>
       </div>
