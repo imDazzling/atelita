@@ -73,7 +73,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   <script src="<?= PATH_VENDOR ?>/owlcarousel/owl.carousel.min.js"></script>
-  <script src="<?= PATH_VENDOR ?>/ckeditor/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
 
 <!-- Scripts circunstanciales -->
 
@@ -82,6 +82,8 @@
     include($contentjs);
   }
 ?>
+
+</script>
 
 </body>
 </html>

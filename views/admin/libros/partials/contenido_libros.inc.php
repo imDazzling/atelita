@@ -109,7 +109,7 @@ function subirPortadaYGuardar($libro, $esModificacion=false){
               else{
                   agregarLibro( $libro );
                   
-                  $mensaje_ok = "Pubicado correctamente.";  
+                  $mensaje_ok = "Publicado correctamente.";  
               }
               
               header( "Location: index.php?m=books&a=list&s=" . urlencode($mensaje_ok) . "&t=success");

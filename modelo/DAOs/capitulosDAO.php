@@ -77,11 +77,8 @@
                     "id_libro= " . $capitulo["id_libro"] .
                     ", numero_capitulos= \"" . $capitulo["numero"] . "\"" .
                     ", nombre_capitulos=\"" . $capitulo["nombre"] . "\"". 
-                    ", descripcion_capitulos=" . $capitulo["descripcion"] . "\"";
-
-        if ( $capitulo["contenido"] ){
-            $sql .= ", contenido_capitulos=\"" . $capitulo["contenido"] . "\"";
-        }
+                    ", descripcion_capitulos=\"" . $capitulo["descripcion"] . "\"". 
+                    ", contenido_capitulos=" . $capitulo["contenido"] . "\"";
         
         $sql .= " WHERE id_capitulos = " . $capitulo["id"];
 

@@ -79,17 +79,14 @@
           </div>
 
           <!-- ckeditor -->
-		<div class="form-group">
-			<label for="contenido">Contenido del Capítulo</label>
-			<form method="post" enctype="multipart/form-data">
+      		<div class="form-group">
+      			<label for="contenido">Contenido del Capítulo</label>
+      			
+            <textarea id="editor" name="contenido" class="ckeditor form-control"><?= isset($capitulo["contenido_capitulos"])? $capitulo["contenido_capitulos"] : ''; ?></textarea>
 
-				<textarea id="contenido" name="contenido" class="ckeditor"><?= isset($capitulo["contenido_capitulos"])? $capitulo["contenido_capitulos"] : ''; ?></textarea>
+      			
+      		</div>
 
-			</form>
-		</div>
-
-          
-          
           <div class="form-group text-center pt-4">
             <button name="submit" type="submit" class="btn btn-primary">Publicar</button>
           </div>
@@ -97,8 +94,8 @@
         </form>
 
     </div>
+  </div>
 
-
-
+</script>
 
 

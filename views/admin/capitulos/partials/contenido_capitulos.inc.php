@@ -21,6 +21,8 @@ if ( isset($_REQUEST["a"]) ){
 
       $capitulo["contenido"] = $_POST["contenido"];
 
+      agregarCapitulo($capitulo);
+
       header( "Location: index.php?m=caps&a=list&s=" . urlencode("Capítulo publicado exitosamente.") . "&t=success");
 
       break;
@@ -66,6 +68,8 @@ if ( isset($_REQUEST["a"]) ){
       $capitulo["descripcion"] = $_POST["descripcion"];
 
       $capitulo["contenido"] = $_POST["contenido"];
+
+      modificarCapitulo($capitulo);
 
       header("Location: index.php?m=caps&a=list&s=" . urlencode("Se ha actualizado el capítulo.") . "&t=success");
 

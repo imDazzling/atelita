@@ -153,9 +153,9 @@ function crearHTMLCardLibro($nombre, $portada, $descripcion, $id_generos, $id_li
       
       $tablaHTML .= "<td>";
 
-      $tablaHTML .= "<a role=\"button\" class=\"btn btn-success btn-sm ml-1  \" href='index.php?m=" . $nombre_modulo . "&a=edit&id=" . $registro[$primary_key] . "'>Editar</button>";
+      $tablaHTML .= "<a role=\"button\" class=\"btn btn-success btn-sm ml-1  \" href='index.php?m=caps&a=edit&id=" . $registro[$primary_key] . "'>Editar</button>";
 
-      $tablaHTML .= "<a role=\"button\" class=\"btn btn-danger btn-sm ml-1  \" href='index.php?m=" . $nombre_modulo . "&a=del&id=" . $registro[$primary_key] . "'>Eliminar</a>";
+      $tablaHTML .= "<a role=\"button\" class=\"btn btn-danger btn-sm ml-1  \" href='index.php?m=caps&a=del&id=" . $registro[$primary_key] . "'>Eliminar</a>";
     }
 
     $tablaHTML .= "</table>";

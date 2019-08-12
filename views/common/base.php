@@ -31,14 +31,19 @@
             <a class="nav-link" href="index.php?m=lib&generos=-1&estados=-1">Mi librería</a>
           </li>
         </ul>
+      
+
       <div id="search-box">
         <form id="search-nav" class="form-inline my-2 my-lg-0">
           <div class="searchbar">
-            <input class="search_input" type="text" name="" placeholder="Buscar...">
-            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+            <input type="hidden" name="m" value="catalogo">
+            <input class="search_input" type="text" id="buscar" name="buscar" placeholder="Buscar...">
+            <a onclick="enviarBusqueda();" href="#" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
         </form>
       </div>
+
+
       <div id="#navbarResponsive" class="navbar-login my-2 my-lg-0">
         <ul class="navbar-nav ml-md-auto">
 
@@ -154,6 +159,18 @@
     include($contentjs);
   }
 ?>
+
+<script type="text/javascript">
+  
+  function enviarBusqueda(){
+    
+  var urlBusqueda = 'index.php?m=catalogo&buscar=' + $("#buscar").val();
+
+  window.setTimeout( window.location = urlBusqueda, 100 );  
+
+  }
+
+</script>
 
 </body>
 </html>
